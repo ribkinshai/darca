@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בית ספר דרכא לאמנויות ולמדעים – טירת כרמל</title>
+<meta name="description" content="אתר בית ספר דרכא לאמנויות ולמדעים, טירת כרמל – רשת דרכא">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#9e1243;      /* טבעת הלוגו */
+    --wine-dark:#7a0d33;
+    --red:#b51c1c;       /* "דרכא" בלוגו */
+    --pink:#e57f9c;
+    --pink-light:#f6d2dc;
+    --blush:#fdf3f6;
+    --ink:#2b2b2e;
+    --gray:#5d5e61;
+    --line:#ece6e8;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Heebo',Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.7}
+  img{max-width:100%;display:block}
+  a{color:var(--wine)}
+  .container{width:min(1180px,92%);margin-inline:auto}
+  .skip{position:absolute;right:-999px;top:0;background:var(--wine);color:#fff;padding:10px 16px;z-index:100}
+  .skip:focus{right:10px}
+  :focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+  /* ===== Header ===== */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:84px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .brand img{width:64px;height:64px;border-radius:50%}
+  .brand b{display:block;font-size:1.05rem;line-height:1.2;color:var(--wine)}
+  .brand span{font-size:.85rem;color:var(--gray)}
+  .menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+  .menu > li{position:relative}
+  .menu > li > a{display:block;padding:10px 14px;text-decoration:none;color:var(--ink);font-weight:500;border-radius:10px}
+  .menu > li > a:hover{background:var(--blush);color:var(--wine)}
+  .has-sub > a::after{content:" ▾";font-size:.7em;color:var(--pink)}
+  .sub{position:absolute;top:100%;right:0;min-width:210px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(122,13,51,.12);list-style:none;margin:0;padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s}
+  .has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+  .sub a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:.95rem}
+  .sub a:hover{background:var(--blush);color:var(--wine)}
+  .burger{display:none;background:none;border:0;font-size:1.8rem;color:var(--wine);cursor:pointer}
+
+  /* ===== Hero ===== */
+  .hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--blush) 100%);overflow:hidden;padding:70px 0 170px}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-block;background:var(--pink-light);color:var(--wine-dark);padding:4px 14px;border-radius:99px;font-weight:500;font-size:.9rem}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;margin:16px 0 8px;color:var(--wine);font-weight:800}
+  .hero h1 small{display:block;font-size:.45em;color:var(--gray);font-weight:400;margin-top:10px}
+  .tagline{font-size:1.35rem;color:var(--red);font-weight:500;letter-spacing:.02em;margin:18px 0 28px}
+  .tagline span{white-space:nowrap}
+  .tagline i{font-style:normal;color:var(--pink);margin:0 8px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 26px;border-radius:99px;text-decoration:none;font-weight:500;transition:.2s}
+  .btn-primary{background:var(--wine);color:#fff}
+  .btn-primary:hover{background:var(--wine-dark)}
+  .btn-ghost{border:2px solid var(--wine);color:var(--wine)}
+  .btn-ghost:hover{background:var(--wine);color:#fff}
+  .hero-logo{justify-self:center;width:min(360px,80%);border-radius:50%;box-shadow:0 30px 60px rgba(158,18,67,.18)}
+  .hero-logo{position:relative}
+  .hero-logo img{width:100%;border-radius:50%}
+  .hero-logo svg{position:absolute;inset:0;width:100%;height:100%}
+  .wv{animation:slideL linear infinite}
+  .wv-a{animation-duration:14s}.wv-b{animation-duration:10s;animation-direction:reverse}.wv-c{animation-duration:7s}
+  .hv{animation:slideH linear infinite}
+  .hv-a{animation-duration:22s}.hv-b{animation-duration:16s;animation-direction:reverse}.hv-c{animation-duration:11s}
+  @keyframes slideL{to{transform:translateX(-1254px)}}
+  @keyframes slideH{to{transform:translateX(-1440px)}}
+  @media (prefers-reduced-motion:reduce){.wv,.hv{animation:none}}
+  .wave{position:absolute;bottom:-1px;left:0;width:100%;height:160px}
+
+  /* ===== Sections ===== */
+  section{padding:80px 0;scroll-margin-top:84px}
+  .sec-head{margin-bottom:36px}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);color:var(--wine);margin:0 0 6px;font-weight:800}
+  .sec-head p{color:var(--gray);margin:0;max-width:640px}
+  .sec-head::after{content:"";display:block;width:60px;height:4px;border-radius:4px;background:var(--pink);margin-top:14px}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .about p{color:var(--gray);font-size:1.05rem}
+  .more{font-weight:700;text-decoration:none}
+  .more::after{content:" ←"}
+  .ph{background:linear-gradient(135deg,var(--pink-light),var(--blush));border-radius:var(--radius);display:grid;place-items:center;color:var(--wine);font-size:.9rem;text-align:center;min-height:300px;border:2px dashed #e9b3c3}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .stat{background:var(--blush);border-radius:14px;padding:16px;text-align:center}
+  .stat b{display:block;font-size:1.8rem;color:var(--wine);line-height:1.1}
+  .stat span{font-size:.9rem;color:var(--gray)}
+
+  .alt{background:var(--blush)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+  .card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--line);transition:.2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(122,13,51,.10)}
+  .icon{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:var(--wine);color:#fff;font-size:1.5rem;margin-bottom:14px}
+  .card h3{margin:0 0 6px;color:var(--wine);font-size:1.25rem}
+  .card p{margin:0 0 12px;color:var(--gray)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{background:var(--pink-light);color:var(--wine-dark);font-size:.82rem;padding:2px 10px;border-radius:99px}
+
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .track{border-radius:var(--radius);padding:36px;color:#fff;position:relative;overflow:hidden;min-height:260px}
+  .track.art{background:linear-gradient(135deg,var(--wine) 0%,var(--pink) 100%)}
+  .track.sci{background:linear-gradient(135deg,var(--wine-dark) 0%,var(--red) 100%)}
+  .track h3{font-size:1.8rem;margin:0 0 8px}
+  .track ul{margin:14px 0 0;padding:0 18px 0 0}
+  .track .big{position:absolute;left:-10px;bottom:-30px;font-size:9rem;opacity:.15}
+
+  .tracks.three{grid-template-columns:1fr .8fr 1fr}
+  .track.lead{background:linear-gradient(135deg,#b08a3e 0%,#d9b86c 100%)}
+  .quote{margin:18px 0 0;padding:16px 20px;border-right:4px solid var(--pink);background:var(--blush);border-radius:12px;color:var(--wine-dark);font-weight:500;font-size:1.05rem}
+  .journey .card{position:relative}
+  .step{width:44px;height:44px;border-radius:50%;background:var(--wine);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.2rem;margin-bottom:12px}
+  .journey .card:nth-child(2) .step{background:#b8285a}.journey .card:nth-child(3) .step{background:#d2507a}.journey .card:nth-child(4) .step{background:var(--pink)}
+  .journey h3{display:inline-block;margin-left:8px}
+  .journey p{margin-top:8px}
+  .pedagogy{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+  .pedagogy div{background:#fff;border-radius:14px;padding:18px 20px;border-right:4px solid var(--wine)}
+  .pedagogy b{display:block;color:var(--wine);margin-bottom:4px}
+  .pedagogy span{color:var(--gray);font-size:.95rem}
+  .partners{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px}
+  .partners span{border:3px solid var(--pink-light);border-radius:99px;padding:14px 26px;font-weight:700;color:var(--wine-dark);background:#fff}
+  .partners .center{background:var(--wine);color:#fff;border-color:var(--wine);font-size:1.3rem;padding:20px 36px}
+  .motto{background:linear-gradient(135deg,var(--wine-dark),var(--wine));text-align:center;padding:70px 0}
+  .motto p{margin:0;color:#fff;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.3}
+  .news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+  .post{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:.2s}
+  .post:hover{box-shadow:0 16px 34px rgba(122,13,51,.10)}
+  .post .ph{min-height:160px;border-radius:0;border:0}
+  .post-body{padding:18px 20px 22px}
+  .meta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--gray);margin-bottom:6px}
+  .tag{color:var(--wine);font-weight:700}
+  .post h3{margin:0;font-size:1.1rem;line-height:1.4}
+
+  .contact{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
+  .info-list{list-style:none;padding:0;margin:0}
+  .info-list li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .info-list span{color:var(--wine);font-size:1.2rem}
+  form{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(122,13,51,.06)}
+  label{display:block;font-weight:500;margin-bottom:4px}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font:inherit;margin-bottom:14px}
+  input:focus,textarea:focus{border-color:var(--pink);outline:none;box-shadow:0 0 0 3px var(--pink-light)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  button.btn{border:0;cursor:pointer;font:inherit;font-weight:500}
+  .thanks{display:none;background:var(--blush);color:var(--wine);padding:12px;border-radius:10px;margin-top:12px}
+
+  /* ===== Footer ===== */
+  footer{background:var(--wine-dark);color:#f7dbe3;padding:56px 0 24px;position:relative}
+  footer a{color:#fff;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+  .f-grid h4{color:#fff;margin:0 0 12px;font-size:1.1rem}
+  .f-grid ul{list-style:none;margin:0;padding:0}
+  .f-grid li{margin-bottom:6px}
+  .f-brand{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+  .f-brand img{width:70px;height:70px;border-radius:50%}
+  .quick{display:flex;flex-wrap:wrap;gap:8px}
+  .quick a{background:rgba(255,255,255,.12);padding:6px 14px;border-radius:99px;font-size:.9rem}
+  .quick a:hover{background:rgba(255,255,255,.25);text-decoration:none}
+  .copy{border-top:1px solid rgba(255,255,255,.18);margin-top:36px;padding-top:18px;font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+
+  /* ===== רשתות חברתיות ===== */
+  .hero-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .social{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:.2s}
+  .social svg{width:20px;height:20px;fill:currentColor}
+  .social.fb{background:#1877f2}
+  .social.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+  .social:hover{transform:translateY(-2px) scale(1.06)}
+  /* ===== כרטיסים לחיצים ===== */
+  a.card{display:block;text-decoration:none;color:inherit;cursor:pointer}
+  a.card:hover h3{text-decoration:underline}
+  a.card .more{display:inline-block;margin-top:4px}
+  .sublinks li{margin:2px 0}
+  .sublinks a{color:#fff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.6);padding:2px 0}
+  .sublinks a:hover{border-bottom-style:solid;padding-inline-start:4px}
+  /* ===== עמוד משנה ===== */
+  .subpage{min-height:70vh}
+  .sp-head{background:linear-gradient(135deg,var(--wine-dark),var(--wine) 60%,var(--pink));color:#fff;padding:46px 0 56px}
+  .crumbs{font-size:.9rem;opacity:.9;margin-bottom:10px}
+  .crumbs a{color:#fff}
+  .sp-head h1{margin:0;font-size:clamp(2rem,5vw,3.2rem);line-height:1.15}
+  .sp-head .chip{background:rgba(255,255,255,.2);color:#fff;font-size:.95rem;margin-top:10px;display:inline-block}
+  .sp-body{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding:50px 0}
+  .sp-body p.lead{font-size:1.15rem;color:var(--ink)}
+  .sp-body h2{color:var(--wine);font-size:1.4rem;margin:28px 0 8px}
+  .sp-body ul{color:var(--gray);padding-right:20px}
+  .todo{background:#fff8e6;border:1px dashed #e0b85c;color:#7a5a12;padding:10px 14px;border-radius:10px;font-size:.92rem;margin-top:20px}
+  .siblings{border-top:1px solid var(--line);padding:26px 0 60px}
+  .siblings h3{margin:0 0 12px;color:var(--wine)}
+  .siblings .chips a{text-decoration:none;padding:6px 14px;font-size:.92rem}
+  .siblings .chips a.on{background:var(--wine);color:#fff}
+  .back{margin-top:22px}
+  @media (max-width:960px){.sp-body{grid-template-columns:1fr}}
+
+  /* ===== Mobile ===== */
+  @media (max-width:960px){
+    .burger{display:block}
+    .menu{position:fixed;inset:84px 0 auto 0;background:#fff;flex-direction:column;padding:12px 4%;border-bottom:1px solid var(--line);max-height:calc(100vh - 84px);overflow:auto;display:none}
+    .menu.open{display:flex}
+    .sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 14px 6px}
+    .hero-grid,.about,.tracks,.tracks.three,.contact,.f-grid,.pedagogy{grid-template-columns:1fr}
+    .hero-logo{width:220px;order:-1}
+    .hero{padding:40px 0 140px;text-align:center}
+    .btns,.hero-top{justify-content:center}
+    .sec-head::after{margin-inline:0}
+  }
+  @media (max-width:560px){ .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">דלג לתוכן</a>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="לעמוד הבית">
+      <img src="logo.png" alt="לוגו בית ספר דרכא לאמנויות ולמדעים טירת כרמל">
+      <div><b>דרכא לאמנויות ולמדעים</b><span>טירת כרמל</span></div>
+    </a>
+    <button class="burger" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="menu">☰</button>
+    <ul class="menu" id="menu">
+      <li class="has-sub"><a href="#about">אודותינו</a>
+        <ul class="sub">
+          <li><a href="#about">אודות בית הספר</a></li>
+          <li><a href="#about">דבר המנהל/ת</a></li>
+          <li><a href="#about">חזון בית הספר</a></li>
+          <li><a href="#about">צוות בית הספר</a></li>
+          <li><a href="#about">תקנון בית הספר</a></li>
+          <li><a href="#about">לוח שיעורים</a></li>
+        </ul>
+      </li>
+      <li class="has-sub"><a href="#grades">המסע השש-שנתי</a>
+        <ul class="sub">
+          <li><a href="#stage-exposure">חשיפה (ז'–ח')</a></li>
+          <li><a href="#stage-experience">התנסות (ז'–ט')</a></li>
+          <li><a href="#stage-choice">בחירה (ט')</a></li>
+          <li><a href="#stage-specialization">התמחות (י'–י"ב)</a></li>
+        </ul>
+      </li>
+      <li class="has-sub"><a href="#tracks">אמנויות ומדעים</a>
+        <ul class="sub">
+          <li><a href="#tracks">ענפי הלמידה</a></li>
+          <li><a href="#spark">מקום לכל ניצוץ</a></li>
+          <li><a href="#partners">השותפים שלנו</a></li>
+        </ul>
+      </li>
+      <li><a href="#news">חדשות ועדכונים</a></li>
+      <li class="has-sub"><a href="#parents">להורים</a>
+        <ul class="sub">
+          <li><a href="#parents">הנהגת הורים</a></li>
+          <li><a href="#parents">תשלומי הורים</a></li>
+          <li><a href="#parents">מידע וטפסים</a></li>
+        </ul>
+      </li>
+      <li><a href="#contact">צרו קשר</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<div id="home">
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-top">
+          <span class="eyebrow">רשת דרכא · Darca Schools</span>
+          <!-- להחליף את # בקישורים האמיתיים -->
+          <a class="social fb" href="#" target="_blank" rel="noopener" aria-label="הפייסבוק של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3z"/></svg></a>
+          <a class="social ig" href="#" target="_blank" rel="noopener" aria-label="האינסטגרם של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8.2a5.4 5.4 0 0 0-1.5-3.9 5.5 5.5 0 0 0-3.9-1.5C15 2.7 9 2.7 7.5 2.8a5.5 5.5 0 0 0-3.9 1.5 5.4 5.4 0 0 0-1.5 3.9C2 9.7 2 14.3 2.1 15.8a5.4 5.4 0 0 0 1.5 3.9 5.5 5.5 0 0 0 3.9 1.5c1.5.1 7.5.1 9 0a5.4 5.4 0 0 0 3.9-1.5 5.5 5.5 0 0 0 1.5-3.9c.1-1.5.1-6.1 0-7.6zM19.8 18a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.3.4s-4.1.1-5.3-.4A3.1 3.1 0 0 1 5.8 18c-.5-1.2-.4-4-.4-5.3s-.1-4.1.4-5.3A3.1 3.1 0 0 1 7.5 5.7c1.2-.5 4-.4 5.3-.4s4.1-.1 5.3.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.3s.1 4.1-.4 5.3z"/></svg></a>
+        </div>
+        <h1>בית ספר דרכא<br>לאמנויות ולמדעים<small>טירת כרמל</small></h1>
+        <p class="tagline"><span>רואים את האדם</span><i>•</i><span>מעצבים דרך</span><i>•</i><span>יוצרים משמעות</span></p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#about">הכירו אותנו</a>
+          <a class="btn btn-ghost" href="#contact">צרו קשר</a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <img src="logo.png" alt="">
+        <svg viewBox="0 0 1254 1254" aria-hidden="true">
+          <defs><clipPath id="inner"><circle cx="624" cy="626" r="597"/></clipPath></defs>
+          <g clip-path="url(#inner)">
+            <rect x="0" y="760" width="1254" height="500" fill="#fff"/>
+            <path class="wv wv-a" d="M0,944 L31,949 L63,953 L94,957 L125,961 L157,963 L188,965 L219,967 L251,967 L282,967 L314,966 L345,964 L376,961 L408,958 L439,954 L470,950 L502,945 L533,940 L564,935 L596,930 L627,926 L658,921 L690,917 L721,913 L752,909 L784,907 L815,905 L846,903 L878,903 L909,903 L941,904 L972,906 L1003,909 L1035,912 L1066,916 L1097,920 L1129,925 L1160,930 L1191,935 L1223,940 L1254,944 L1285,949 L1317,953 L1348,957 L1379,961 L1411,963 L1442,965 L1473,967 L1505,967 L1536,967 L1567,966 L1599,964 L1630,961 L1662,958 L1693,954 L1724,950 L1756,945 L1787,940 L1818,935 L1850,930 L1881,926 L1912,921 L1944,917 L1975,913 L2006,909 L2038,907 L2069,905 L2100,903 L2132,903 L2163,903 L2194,904 L2226,906 L2257,909 L2289,912 L2320,916 L2351,920 L2383,925 L2414,930 L2445,935 L2477,940 L2508,944 L2508,1260 L0,1260 Z" fill="#f6c4cf"/>
+            <path class="wv wv-b" d="M0,1039 L31,1039 L63,1039 L94,1037 L125,1036 L157,1033 L188,1029 L219,1025 L251,1021 L282,1016 L314,1011 L345,1005 L376,1000 L408,995 L439,990 L470,985 L502,981 L533,978 L564,975 L596,973 L627,971 L658,971 L690,971 L721,973 L752,974 L784,977 L815,981 L846,985 L878,989 L909,994 L941,999 L972,1005 L1003,1010 L1035,1015 L1066,1020 L1097,1025 L1129,1029 L1160,1032 L1191,1035 L1223,1037 L1254,1039 L1285,1039 L1317,1039 L1348,1037 L1379,1036 L1411,1033 L1442,1029 L1473,1025 L1505,1021 L1536,1016 L1567,1011 L1599,1005 L1630,1000 L1662,995 L1693,990 L1724,985 L1756,981 L1787,978 L1818,975 L1850,973 L1881,971 L1912,971 L1944,971 L1975,973 L2006,974 L2038,977 L2069,981 L2100,985 L2132,989 L2163,994 L2194,999 L2226,1005 L2257,1010 L2289,1015 L2320,1020 L2351,1025 L2383,1029 L2414,1032 L2445,1035 L2477,1037 L2508,1039 L2508,1260 L0,1260 Z" fill="#ec93ad" opacity=".9"/>
+            <path class="wv wv-c" d="M0,1089 L31,1083 L63,1077 L94,1071 L125,1065 L157,1058 L188,1052 L219,1047 L251,1042 L282,1037 L314,1034 L345,1031 L376,1029 L408,1028 L439,1028 L470,1029 L502,1031 L533,1034 L564,1038 L596,1042 L627,1047 L658,1053 L690,1059 L721,1065 L752,1071 L784,1078 L815,1084 L846,1089 L878,1094 L909,1099 L941,1102 L972,1105 L1003,1107 L1035,1108 L1066,1108 L1097,1107 L1129,1105 L1160,1102 L1191,1098 L1223,1094 L1254,1089 L1285,1083 L1317,1077 L1348,1071 L1379,1065 L1411,1058 L1442,1052 L1473,1047 L1505,1042 L1536,1037 L1567,1034 L1599,1031 L1630,1029 L1662,1028 L1693,1028 L1724,1029 L1756,1031 L1787,1034 L1818,1038 L1850,1042 L1881,1047 L1912,1053 L1944,1059 L1975,1065 L2006,1071 L2038,1078 L2069,1084 L2100,1089 L2132,1094 L2163,1099 L2194,1102 L2226,1105 L2257,1107 L2289,1108 L2320,1108 L2351,1107 L2383,1105 L2414,1102 L2445,1098 L2477,1094 L2508,1089 L2508,1260 L0,1260 Z" fill="#a8074a"/>
+          </g>
+          <circle cx="624" cy="626" r="632" fill="none" stroke="#fff" stroke-width="30"/>
+          <circle cx="624" cy="626" r="603" fill="none" stroke="#ab033c" stroke-width="31"/>
+        </svg>
+      </div>
+    </div>
+    <!-- גל בהשראת הלוגו -->
+    <svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+      <path class="hv hv-a" d="M0,73 L36,77 L72,80 L108,83 L144,85 L180,87 L216,88 L252,88 L288,88 L324,86 L360,85 L396,82 L432,79 L468,76 L504,72 L540,68 L576,64 L612,59 L648,55 L684,51 L720,47 L756,43 L792,40 L828,37 L864,35 L900,33 L936,32 L972,32 L1008,32 L1044,34 L1080,35 L1116,38 L1152,41 L1188,44 L1224,48 L1260,52 L1296,56 L1332,61 L1368,65 L1404,69 L1440,73 L1476,77 L1512,80 L1548,83 L1584,85 L1620,87 L1656,88 L1692,88 L1728,88 L1764,86 L1800,85 L1836,82 L1872,79 L1908,76 L1944,72 L1980,68 L2016,64 L2052,59 L2088,55 L2124,51 L2160,47 L2196,43 L2232,40 L2268,37 L2304,35 L2340,33 L2376,32 L2412,32 L2448,32 L2484,34 L2520,35 L2556,38 L2592,41 L2628,44 L2664,48 L2700,52 L2736,56 L2772,61 L2808,65 L2844,69 L2880,73 L2880,160 L0,160 Z" fill="#f6d2dc"/>
+      <path class="hv hv-b" d="M0,119 L36,119 L72,118 L108,116 L144,114 L180,111 L216,109 L252,105 L288,102 L324,98 L360,94 L396,91 L432,87 L468,83 L504,80 L540,78 L576,75 L612,73 L648,72 L684,71 L720,71 L756,71 L792,72 L828,74 L864,76 L900,79 L936,81 L972,85 L1008,88 L1044,92 L1080,96 L1116,99 L1152,103 L1188,107 L1224,110 L1260,112 L1296,115 L1332,117 L1368,118 L1404,119 L1440,119 L1476,119 L1512,118 L1548,116 L1584,114 L1620,111 L1656,109 L1692,105 L1728,102 L1764,98 L1800,94 L1836,91 L1872,87 L1908,83 L1944,80 L1980,78 L2016,75 L2052,73 L2088,72 L2124,71 L2160,71 L2196,71 L2232,72 L2268,74 L2304,76 L2340,79 L2376,81 L2412,85 L2448,88 L2484,92 L2520,96 L2556,99 L2592,103 L2628,107 L2664,110 L2700,112 L2736,115 L2772,117 L2808,118 L2844,119 L2880,119 L2880,160 L0,160 Z" fill="#e57f9c" opacity=".75"/>
+      <path class="hv hv-c" d="M0,132 L36,129 L72,127 L108,125 L144,122 L180,120 L216,117 L252,115 L288,113 L324,112 L360,111 L396,110 L432,109 L468,109 L504,109 L540,110 L576,111 L612,112 L648,114 L684,116 L720,118 L756,121 L792,123 L828,125 L864,128 L900,130 L936,133 L972,135 L1008,137 L1044,138 L1080,139 L1116,140 L1152,141 L1188,141 L1224,141 L1260,140 L1296,139 L1332,138 L1368,136 L1404,134 L1440,132 L1476,129 L1512,127 L1548,125 L1584,122 L1620,120 L1656,117 L1692,115 L1728,113 L1764,112 L1800,111 L1836,110 L1872,109 L1908,109 L1944,109 L1980,110 L2016,111 L2052,112 L2088,114 L2124,116 L2160,118 L2196,121 L2232,123 L2268,125 L2304,128 L2340,130 L2376,133 L2412,135 L2448,137 L2484,138 L2520,139 L2556,140 L2592,141 L2628,141 L2664,141 L2700,140 L2736,139 L2772,138 L2808,136 L2844,134 L2880,132 L2880,160 L0,160 Z" fill="#9e1243"/>
+    </svg>
+  </section>
+
+  <!-- ===== אודות ===== -->
+  <section id="about">
+    <div class="container about">
+      <div>
+        <div class="sec-head"><h2>לא רק צומחים לגובה – מעמיקים שורשים</h2></div>
+        <p>בית ספר דרכא לאמנויות ולמדעים בטירת כרמל הוא בית ספר שש-שנתי ברשת דרכא, מכיתה ז' ועד י"ב. בשנים האחרונות בית הספר צמח בקצב יוצא דופן, עם כיתות חדשות, התרחבות פיזית וארגונית וצוות חינוכי שהולך וגדל.</p>
+        <p>לצד הצמיחה אנחנו מקפידים להעמיק שורשים: שפה חינוכית משותפת, תרבות של אמון וזהות שש-שנתית ברורה. אנחנו לא רק מלמדים, אנחנו מטפחים. הדרך שלנו: <b>לראות, ללוות, לפתוח ולהצמיח</b> כל תלמיד ותלמידה.</p>
+        <div class="stats">
+          <div class="stat"><b>573</b><span>תלמידים</span></div>
+          <div class="stat"><b>10</b><span>מגמות</span></div>
+          <div class="stat"><b>62</b><span>אנשי חינוך</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="ph">תמונה של בית הספר<br>(תתווסף בהמשך)</div>
+        <blockquote class="quote">"בית ספר שמבקש לראות את התלמיד, חייב קודם כל לראות את האדם שמלמד אותו."</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== שכבות ===== -->
+  <section id="grades" class="alt">
+    <div class="container">
+      <div class="sec-head"><h2>המסע הפדגוגי השש-שנתי</h2><p>רצף אחד של תרבות ופדגוגיה, מכיתה ז' ועד י"ב. כל שלב בונה על הקודם לו.</p></div>
+      <div class="cards journey">
+        <a class="card" href="#stage-exposure"><div class="step">1</div><h3>חשיפה</h3><span class="chip">ז'–ח'</span><p>פתיחת דלתות לעולמות ידע מגוונים, תוכניות גשרים וחיזוק אוריינות טכנולוגית.</p><span class="more">לפרטים</span></a>
+        <a class="card" href="#stage-experience"><div class="step">2</div><h3>התנסות</h3><span class="chip">ז'–ט'</span><p>רצועות בחירה בימי שני: למידה פעילה, סקרנות וקול התלמיד.</p><span class="more">לפרטים</span></a>
+        <a class="card" href="#stage-choice"><div class="step">3</div><h3>בחירה</h3><span class="chip">ט'</span><p>גיבוש זהות אישית, מסוגלות ותחומי עניין לקראת המעבר לתיכון.</p><span class="more">לפרטים</span></a>
+        <a class="card" href="#stage-specialization"><div class="step">4</div><h3>התמחות</h3><span class="chip">י'–י"ב</span><p>כניסה למגמות ולמסלולים אקדמיים.</p><span class="more">לפרטים</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== אמנויות ומדעים ===== -->
+  <section id="tracks">
+    <div class="container">
+      <div class="sec-head"><h2>ענפי הלמידה: זהות כפולה של מצוינות</h2><p>המקום שבו מדע, טכנולוגיה, אמנות ויצירה נפגשים, כדי לעצב אזרחי עתיד בעלי אופקים רחבים.</p></div>
+      <div class="tracks three">
+        <div class="track art">
+          <h3>אמנויות ויצירה</h3>
+          <ul class="sublinks"><li><a href="#art-dance">מחול</a></li><li><a href="#art-music">מוזיקה</a></li><li><a href="#art-theater">תיאטרון</a></li><li><a href="#art-film">קולנוע</a></li><li><a href="#art-media">תקשורת</a></li><li><a href="#art-visual">אמנות</a></li></ul>
+          <div class="big" aria-hidden="true">🎨</div>
+        </div>
+        <div class="track lead">
+          <h3>התוצר המאחד: מנהיגות</h3>
+          <p>שני העולמות נפגשים בתלמידים שיודעים לחשוב, ליצור ולהוביל.</p>
+          <div class="big" aria-hidden="true">✦</div>
+        </div>
+        <div class="track sci">
+          <h3>מדעים ולוגיקה</h3>
+          <ul class="sublinks"><li><a href="#sci-physics">פיזיקה</a></li><li><a href="#sci-cs">מדעי המחשב</a></li><li><a href="#sci-biology">ביולוגיה</a></li><li><a href="#sci-environment">אדם וסביבה</a></li></ul>
+          <div class="big" aria-hidden="true">🔬</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== מקום לכל ניצוץ ===== -->
+  <section id="spark" class="alt">
+    <div class="container">
+      <div class="sec-head"><h2>מקום לכל ניצוץ</h2><p>ממוזיקאי הקונסרבטוריון המחונן ועד לתלמיד הזקוק לתמיכה צמודה, אנחנו לא רק מלמדים, <b>אנחנו מטפחים</b>. אנחנו דואגים שכל תלמיד, ללא קשר לרקע או ליכולת, ימצא את המקום הייחודי שלו לצמוח, להצליח, ובסופו של דבר להוביל.</p></div>
+      <div class="cards">
+        <div class="card"><div class="icon">🤝</div><h3>עשייה קהילתית</h3><p>תנועות נוער וצופים: טיפוח חובה אזרחית וחיבור בין עמיתים.</p></div>
+        <div class="card"><div class="icon">🎵</div><h3>ערוץ יצירתי</h3><p>הקונסרבטוריון כמנוף לביטוי יצירתי משותף.</p></div>
+        <div class="card"><div class="icon">🗳</div><h3>קול אזרחי</h3><p>מועצת תלמידים שמעצימה את התלמידים לעצב את סביבתם היומיומית.</p></div>
+        <div class="card"><div class="icon">🧭</div><h3>מנהיגות שטח</h3><p>מש"צים (מדריכי של"ח צעירים): בניית חוסן ואחריות סביבתית.</p></div>
+      </div>
+      <div class="pedagogy">
+        <div><b>למידה פעילה, גמישה ומותאמת</b><span>מרחב שמאפשר למורים להתאים את קצב וסגנון ההוראה לצורכי התלמיד באופן דינמי.</span></div>
+        <div><b>תוכנית אנגלית 720</b><span>אימוץ תוכנית הדגל כמנוע לשינוי שפתי וקוגניטיבי.</span></div>
+        <div><b>בהלימה ליעד הלאומי</b><span>יישור קו עם מטרות משרד החינוך לקידום מצוינות.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== שותפויות ===== -->
+  <section id="partners">
+    <div class="container">
+      <div class="sec-head"><h2>לא פועלים לבד – אקו-סיסטם של שותפויות</h2><p>השותפויות שלנו הן מכפיל כוח שמאפשר לבית הספר לצמוח, ובמרכזן תמיד עומד התלמיד.</p></div>
+      <div class="partners">
+        <span>רשת דרכא</span><span>עיריית טירת כרמל</span><span class="center">התלמיד</span><span>משרד החינוך ומחוז חיפה</span><span>צוות, הורים וקהילה</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== חדשות ===== -->
+  <section id="news" class="alt">
+    <div class="container">
+      <div class="sec-head"><h2>חדשות ועדכונים</h2><p>מה קורה אצלנו בבית הספר.</p></div>
+      <div class="news">
+        <article class="post"><div class="ph">תמונה</div><div class="post-body"><div class="meta"><span class="tag">חט"ב</span><time>נובמבר 2026</time></div><h3>כותרת כתבה לדוגמה – פעילות שכבתית</h3></div></article>
+        <article class="post"><div class="ph">תמונה</div><div class="post-body"><div class="meta"><span class="tag">אמנויות</span><time>נובמבר 2026</time></div><h3>תערוכת תלמידים – כותרת לדוגמה</h3></div></article>
+        <article class="post"><div class="ph">תמונה</div><div class="post-body"><div class="meta"><span class="tag">מדעים</span><time>אוקטובר 2026</time></div><h3>יום חקר מדעי – כותרת לדוגמה</h3></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== להורים ===== -->
+  <section id="parents">
+    <div class="container">
+      <div class="sec-head"><h2>להורים</h2><p>כל המידע והטפסים במקום אחד.</p></div>
+      <div class="cards">
+        <div class="card"><div class="icon">👥</div><h3>הנהגת הורים</h3><p>הכירו את נציגי ההורים ודרכי ההתקשרות.</p><a class="more" href="#parents">למידע נוסף</a></div>
+        <div class="card"><div class="icon">₪</div><h3>תשלומי הורים</h3><p>פירוט התשלומים לשנת הלימודים ואופן התשלום.</p><a class="more" href="#parents">למידע נוסף</a></div>
+        <div class="card"><div class="icon">📄</div><h3>מידע וטפסים</h3><p>אישורים, טפסים להורדה ולוח חופשות.</p><a class="more" href="#parents">למידע נוסף</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== חזון ===== -->
+  <section class="motto" aria-label="המוטו שלנו">
+    <div class="container"><p>רואים את האדם.<br>מעצבים דרך.<br>יוצרים משמעות.</p></div>
+  </section>
+
+  <!-- ===== צרו קשר ===== -->
+  <section id="contact" class="alt">
+    <div class="container contact">
+      <div>
+        <div class="sec-head"><h2>צרו קשר</h2><p>נשמח לענות על כל שאלה.</p></div>
+        <ul class="info-list">
+          <li><span>📍</span><div>כתובת: [להשלמה], טירת כרמל</div></li>
+          <li><span>☎</span><div>טלפון: [להשלמה]</div></li>
+          <li><span>✉</span><div>דוא"ל: [להשלמה]</div></li>
+          <li><span>🕗</span><div>שעות מזכירות: א'–ה' [להשלמה]</div></li>
+        </ul>
+      </div>
+      <form name="contact" method="POST" data-netlify="true" id="contactForm">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="row2">
+          <div><label for="name">שם מלא</label><input id="name" name="name" required></div>
+          <div><label for="phone">טלפון</label><input id="phone" name="phone" type="tel"></div>
+        </div>
+        <label for="email">דוא"ל</label><input id="email" name="email" type="email" required>
+        <label for="msg">תוכן ההודעה</label><textarea id="msg" name="message" rows="5" required></textarea>
+        <button class="btn btn-primary" type="submit">שליחה</button>
+        <div class="thanks" id="thanks" role="status">תודה! ההודעה התקבלה ונחזור אליכם בהקדם.</div>
+      </form>
+    </div>
+  </section>
+</div>
+
+  <!-- עמודי משנה: התוכן שלהם נמצא באובייקט PAGES בסקריפט בתחתית הקובץ -->
+  <article id="subpage" class="subpage" hidden></article>
+</main>
+
+<footer>
+  <div class="container f-grid">
+    <div>
+      <div class="f-brand"><img src="logo.png" alt=""><div><b style="color:#fff;font-size:1.1rem">דרכא לאמנויות ולמדעים</b><br>טירת כרמל</div></div>
+      <p>בית ספר שש-שנתי ברשת דרכא. רואים את האדם, מעצבים דרך, יוצרים משמעות.</p>
+    </div>
+    <div>
+      <h4>ניווט</h4>
+      <ul>
+        <li><a href="#about">אודותינו</a></li>
+        <li><a href="#grades">המסע השש-שנתי</a></li>
+        <li><a href="#tracks">אמנויות ומדעים</a></li>
+        <li><a href="#news">חדשות ועדכונים</a></li>
+        <li><a href="#parents">להורים</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>קישורים מהירים</h4>
+      <div class="quick">
+        <a href="https://web.mashov.info/" target="_blank" rel="noopener">משו"ב</a>
+        <a href="https://darca.org.il/" target="_blank" rel="noopener">רשת דרכא</a>
+        <a href="https://edu.gov.il/" target="_blank" rel="noopener">משרד החינוך</a>
+        <a href="#" >אינסטגרם</a>
+        <a href="#" >פייסבוק</a>
+      </div>
+    </div>
+  </div>
+  <div class="container copy">
+    <span>© 2026 בית ספר דרכא לאמנויות ולמדעים, טירת כרמל</span>
+    <a href="#">הצהרת נגישות</a>
+  </div>
+</footer>
+
+<script>
+  // תפריט מובייל
+  const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
+
+  // ===== עמודי משנה =====
+  // כדי לעדכן תוכן של עמוד: לשנות כאן את intro / items. todo = הערה פנימית שתוצג עד שימולא תוכן אמיתי (למחוק כשמוכן).
+  const GROUPS={
+    journey:{name:'המסע השש-שנתי',back:'#grades'},
+    arts:{name:'אמנויות ויצירה',back:'#tracks'},
+    sci:{name:'מדעים ולוגיקה',back:'#tracks'}
+  };
+  const PAGES={
+    'stage-exposure':{g:'journey',title:'חשיפה',tag:"שכבות ז'–ח'",
+      intro:'השלב הראשון במסע: פתיחת דלתות לעולמות ידע מגוונים. התלמידים מכירים את תחומי האמנויות והמדעים של בית הספר, ובונים בסיס רחב לקראת ההמשך.',
+      items:['היכרות עם מגוון עולמות ידע, באמנויות ובמדעים','תוכניות גשרים שמלוות את המעבר לבית הספר','חיזוק אוריינות טכנולוגית'],
+      todo:'להשלמה: פירוט התוכניות בשכבות ז׳–ח׳, מחנכים ותמונות.'},
+    'stage-experience':{g:'journey',title:'התנסות',tag:"שכבות ז'–ט'",
+      intro:'התלמידים לא רק שומעים על התחומים, הם מתנסים בהם. ברצועות הבחירה בימי שני כל תלמיד בוחר מה לחוות, ולומד דרך עשייה.',
+      items:['רצועות בחירה בימי שני','למידה פעילה ומבוססת התנסות','פיתוח סקרנות וחיזוק קול התלמיד'],
+      todo:'להשלמה: רשימת שיעורי הבחירה הנוכחיים.'},
+    'stage-choice':{g:'journey',title:'בחירה',tag:"שכבה ט'",
+      intro:'שנה של גיבוש זהות. התלמידים מבררים מה מעניין אותם ובמה הם טובים, ומתכוננים לבחירת מגמה לקראת המעבר לתיכון.',
+      items:['גיבוש זהות אישית ותחושת מסוגלות','בירור תחומי עניין','ליווי והכוונה לקראת המעבר לתיכון ובחירת מגמה'],
+      todo:'להשלמה: תהליך בחירת המגמות ולוח זמנים.'},
+    'stage-specialization':{g:'journey',title:'התמחות',tag:"שכבות י'–י\"ב",
+      intro:'בחטיבה העליונה התלמידים נכנסים למגמות ולמסלולים אקדמיים, ומעמיקים בתחום שבחרו עד הבגרות.',
+      items:['לימוד במגמות אמנות ומדעים','מסלולים אקדמיים','מעורבות חברתית ומנהיגות'],
+      todo:'להשלמה: רשימת המגמות, היקף יחידות הלימוד ומידע על בגרויות.'},
+
+    'art-dance':{g:'arts',title:'מחול',intro:'מגמת המחול משלבת טכניקה, יצירה וביטוי אישי דרך התנועה.',items:['שיעורי טכניקה','יצירה וכוריאוגרפיה','הופעות ומופעים'],todo:'להשלמה: תיאור המגמה, צוות ותמונות.'},
+    'art-music':{g:'arts',title:'מוזיקה',intro:'לימודי המוזיקה בבית הספר, בשיתוף הקונסרבטוריון, הם מנוף לביטוי יצירתי משותף.',items:['נגינה והרכבים','תיאוריה ויצירה','הופעות ומופעים'],todo:'להשלמה: תיאור המגמה, הרכבים ותמונות.'},
+    'art-theater':{g:'arts',title:'תיאטרון',intro:'במגמת התיאטרון התלמידים מתנסים במשחק, בבימוי וביצירה בימתית.',items:['משחק','בימוי ויצירה','הפקות'],todo:'להשלמה: תיאור המגמה, הפקות ותמונות.'},
+    'art-film':{g:'arts',title:'קולנוע',intro:'במגמת הקולנוע התלמידים לומדים לספר סיפור דרך המצלמה, מהתסריט ועד העריכה.',items:['תסריטאות','צילום ובימוי','עריכה והפקה'],todo:'להשלמה: תיאור המגמה וסרטי תלמידים.'},
+    'art-media':{g:'arts',title:'תקשורת',intro:'מגמת התקשורת מפתחת חשיבה ביקורתית על מדיה ומלמדת ליצור תוכן.',items:['עיתונות ותוכן','מדיה דיגיטלית','חשיבה ביקורתית'],todo:'להשלמה: תיאור המגמה ותוצרים.'},
+    'art-visual':{g:'arts',title:'אמנות',intro:'מגמת האמנות היא מרחב ליצירה חזותית, לחקירה ולפיתוח שפה אמנותית אישית.',items:['רישום וציור','יצירה בחומרים','תערוכות'],todo:'להשלמה: תיאור המגמה ועבודות תלמידים.'},
+
+    'sci-physics':{g:'sci',title:'פיזיקה',intro:'מגמת הפיזיקה מלמדת להבין את חוקי הטבע דרך חקר, ניסוי וחשיבה כמותית.',items:['מכניקה וחשמל','ניסויים במעבדה','פתרון בעיות'],todo:'להשלמה: תיאור המגמה וצוות.'},
+    'sci-cs':{g:'sci',title:'מדעי המחשב',intro:'מגמת מדעי המחשב מפתחת חשיבה אלגוריתמית ויכולת לבנות פתרונות בתוכנה.',items:['תכנות','אלגוריתמים','פרויקטים'],todo:'להשלמה: תיאור המגמה ופרויקטים.'},
+    'sci-biology':{g:'sci',title:'ביולוגיה',intro:'מגמת הביולוגיה חוקרת את עולם החי, מהתא ועד המערכת האקולוגית.',items:['ביולוגיה של התא ושל האדם','מעבדה וחקר','סיורים ועבודת שדה'],todo:'להשלמה: תיאור המגמה וצוות.'},
+    'sci-environment':{g:'sci',title:'אדם וסביבה',intro:'מגמת אדם וסביבה עוסקת בקשר בין האדם לסביבה שבה הוא חי, ובאחריות שלנו כלפיה.',items:['סביבה וקיימות','חקר שטח','מעורבות בקהילה'],todo:'להשלמה: תיאור המגמה ופרויקטים.'}
+  };
+  const home=document.getElementById('home'), sub=document.getElementById('subpage');
+  function renderPage(id){
+    const p=PAGES[id], g=GROUPS[p.g];
+    const sibs=Object.entries(PAGES).filter(([,v])=>v.g===p.g)
+      .map(([k,v])=>`<a class="chip${k===id?' on':''}" href="#${k}">${v.title}</a>`).join('');
+    sub.innerHTML=`
+      <div class="sp-head"><div class="container">
+        <div class="crumbs"><a href="#top">דף הבית</a> › <a href="${g.back}">${g.name}</a> › ${p.title}</div>
+        <h1>${p.title}</h1>${p.tag?`<span class="chip">${p.tag}</span>`:''}
+      </div></div>
+      <div class="container sp-body">
+        <div>
+          <p class="lead">${p.intro}</p>
+          <h2>מה תמצאו כאן</h2>
+          <ul>${p.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+          ${p.todo?`<div class="todo">${p.todo}</div>`:''}
+          <a class="btn btn-ghost back" href="${g.back}">חזרה ל${g.name}</a>
+        </div>
+        <div class="ph">תמונה – ${p.title}<br>(תתווסף בהמשך)</div>
+      </div>
+      <div class="container siblings"><h3>עוד ב${g.name}</h3><div class="chips">${sibs}</div></div>`;
+    document.title=p.title+' | דרכא לאמנויות ולמדעים טירת כרמל';
+  }
+  function route(){
+    const id=location.hash.slice(1);
+    if(PAGES[id]){
+      renderPage(id); home.hidden=true; sub.hidden=false; window.scrollTo(0,0);
+    }else{
+      const wasSub=!sub.hidden;
+      sub.hidden=true; home.hidden=false; document.title='בית ספר דרכא לאמנויות ולמדעים – טירת כרמל';
+      if(wasSub){ const t=id&&document.getElementById(id); t?t.scrollIntoView():window.scrollTo(0,0); }
+    }
+  }
+  window.addEventListener('hashchange',route); route();
+
+  // טופס: באתר Netlify נשלח באמת, בתצוגה המקדימה רק מציג תודה
+  document.getElementById('contactForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=e.target, done=()=>{f.reset();document.getElementById('thanks').style.display='block'};
+    if(location.hostname.endsWith('netlify.app')){
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(done).catch(done);
+    } else done();
+  });
+</script>
+</body>
+</html>
