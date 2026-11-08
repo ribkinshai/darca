@@ -390,6 +390,16 @@
   @keyframes floaty{50%{transform:translateY(-12px)}}
   @media (prefers-reduced-motion:reduce){.progress{display:none}}
 
+  /* תפריט: בלי שבירת שורות; במסכים בינוניים עוברים לתפריט המבורגר */
+  .menu > li > a{white-space:nowrap;padding:10px 12px}
+  .brand b{white-space:nowrap}
+  @media (max-width:1240px){
+    .burger{display:block;order:3}
+    .menu{position:fixed;inset:84px 0 auto 0;background:#fff;flex-direction:column;padding:12px 4%;border-bottom:1px solid var(--line);max-height:calc(100vh - 84px);overflow:auto;display:none}
+    .menu.open{display:flex}
+    .sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 14px 6px}
+    .nav .head-social{margin-inline-start:auto;margin-inline-end:14px}
+  }
   /* ===== Mobile ===== */
   @media (max-width:960px){
     .burger{display:block}
@@ -402,7 +412,7 @@
     .btns,.hero-top,.tagline{justify-content:center}
     .sec-head::after{margin-inline:0}
   }
-  @media (max-width:560px){ .brand img{width:46px;height:46px} .brand b{font-size:.92rem} .brand-wrap{gap:10px} .head-social{gap:6px} .head-social .social{width:28px;height:28px} .head-social .social svg{width:15px;height:15px} .tagline i{display:none} .tagline{gap:2px 16px} .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
+  @media (max-width:560px){ .brand b{white-space:normal} .brand img{width:46px;height:46px} .brand b{font-size:.92rem} .brand-wrap{gap:10px} .head-social{gap:6px} .head-social .social{width:28px;height:28px} .head-social .social svg{width:15px;height:15px} .tagline i{display:none} .tagline{gap:2px 16px} .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
 </style>
 </head>
 <body>
@@ -429,11 +439,15 @@
           <li><a href="#about">לוח שיעורים</a></li>
         </ul>
       </li>
-      <li class="has-sub"><a href="#grades">המסע השש-שנתי</a>
+      <li class="has-sub"><a href="#stage-exposure">חטיבת הנעורים</a>
         <ul class="sub">
           <li><a href="#stage-exposure">חשיפה (ז'–ח')</a></li>
           <li><a href="#stage-experience">התנסות (ז'–ט')</a></li>
           <li><a href="#stage-choice">בחירה (ט')</a></li>
+        </ul>
+      </li>
+      <li class="has-sub"><a href="#stage-specialization">חטיבה עליונה</a>
+        <ul class="sub">
           <li><a href="#stage-specialization">התמחות (י'–י"ב)</a></li>
         </ul>
       </li>
@@ -632,7 +646,8 @@
       <h4>ניווט</h4>
       <ul>
         <li><a href="#about">אודותינו</a></li>
-        <li><a href="#grades">המסע השש-שנתי</a></li>
+        <li><a href="#stage-exposure">חטיבת הנעורים</a></li>
+        <li><a href="#stage-specialization">חטיבה עליונה</a></li>
         <li><a href="#tracks">אמנויות ומדעים</a></li>
         <li><a href="#news">חדשות ועדכונים</a></li>
         <li><a href="#parents">להורים</a></li>
