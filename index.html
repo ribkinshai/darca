@@ -23,6 +23,7 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
+  html,body{overflow-x:hidden}
   body{margin:0;font-family:'Heebo',Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.7}
   img{max-width:100%;display:block}
   a{color:var(--wine)}
@@ -53,9 +54,10 @@
   .hero{position:relative;background:linear-gradient(180deg,#fff 0%,var(--blush) 100%);overflow:hidden;padding:70px 0 170px}
   .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
   .eyebrow{display:inline-block;background:var(--pink-light);color:var(--wine-dark);padding:4px 14px;border-radius:99px;font-weight:500;font-size:.9rem}
-  .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;margin:16px 0 8px;color:var(--wine);font-weight:800}
+  .hero h1{font-size:clamp(1.9rem,8vw,3.8rem);line-height:1.1;margin:16px 0 8px;color:var(--wine);font-weight:800}
   .hero h1 small{display:block;font-size:.45em;color:var(--gray);font-weight:400;margin-top:10px}
   .tagline{font-size:1.35rem;color:var(--red);font-weight:500;letter-spacing:.02em;margin:18px 0 28px}
+  .tagline{display:flex;flex-wrap:wrap;gap:4px 0;align-items:center}
   .tagline span{white-space:nowrap}
   .tagline i{font-style:normal;color:var(--pink);margin:0 8px}
   .btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -208,10 +210,10 @@
     .hero-grid,.about,.tracks,.tracks.three,.contact,.f-grid,.pedagogy{grid-template-columns:1fr}
     .hero-logo{width:220px;order:-1}
     .hero{padding:40px 0 140px;text-align:center}
-    .btns,.hero-top{justify-content:center}
+    .btns,.hero-top,.tagline{justify-content:center}
     .sec-head::after{margin-inline:0}
   }
-  @media (max-width:560px){ .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
+  @media (max-width:560px){ .tagline i{display:none} .tagline{gap:2px 16px} .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
 </style>
 </head>
 <body>
