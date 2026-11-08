@@ -356,6 +356,15 @@
     transform:rotate(45deg);background:#fff;border:1.5px solid rgba(236,106,44,.6)}
   #home > section.motto + section::before,#home > section.motto + section::after{display:none}
 
+  /* רשתות חברתיות בפס העליון – בצבעי האתר */
+  .nav .head-social .social{background:var(--peach);color:var(--wine);border:1px solid #f6d3b8}
+  .nav .head-social .social:hover{background:linear-gradient(135deg,var(--wine),var(--pink));color:#fff;border-color:transparent;transform:translateY(-2px)}
+  .waze{display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:3px 12px;border-radius:99px;background:var(--peach);color:var(--orange-dark);font-weight:500;text-decoration:none;font-size:.92rem}
+  .waze::before{content:"🚗"}
+  .waze:hover{background:var(--pink);color:#fff}
+  .info-list a{color:var(--ink)}
+  @media (max-width:960px){.burger{order:3}}
+
   /* ===== אנימציות גלילה ===== */
   .progress{position:fixed;top:0;right:0;height:4px;width:0;background:var(--sunset);z-index:60;transition:width .1s linear}
   header{transition:box-shadow .3s}
@@ -407,10 +416,6 @@
       <img src="logo.png" alt="לוגו בית ספר דרכא לאמנויות ולמדעים טירת כרמל">
       <div><b>דרכא לאמנויות ולמדעים</b><span>טירת כרמל</span></div>
     </a>
-      <div class="head-social"><!-- להחליף את # בקישורים האמיתיים -->
-        <a class="social fb" href="#" target="_blank" rel="noopener" aria-label="הפייסבוק של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3z"/></svg></a>
-        <a class="social ig" href="#" target="_blank" rel="noopener" aria-label="האינסטגרם של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8.2a5.4 5.4 0 0 0-1.5-3.9 5.5 5.5 0 0 0-3.9-1.5C15 2.7 9 2.7 7.5 2.8a5.5 5.5 0 0 0-3.9 1.5 5.4 5.4 0 0 0-1.5 3.9C2 9.7 2 14.3 2.1 15.8a5.4 5.4 0 0 0 1.5 3.9 5.5 5.5 0 0 0 3.9 1.5c1.5.1 7.5.1 9 0a5.4 5.4 0 0 0 3.9-1.5 5.5 5.5 0 0 0 1.5-3.9c.1-1.5.1-6.1 0-7.6zM19.8 18a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.3.4s-4.1.1-5.3-.4A3.1 3.1 0 0 1 5.8 18c-.5-1.2-.4-4-.4-5.3s-.1-4.1.4-5.3A3.1 3.1 0 0 1 7.5 5.7c1.2-.5 4-.4 5.3-.4s4.1-.1 5.3.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.3s.1 4.1-.4 5.3z"/></svg></a>
-      </div>
     </div>
     <button class="burger" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="menu">☰</button>
     <ul class="menu" id="menu">
@@ -448,6 +453,10 @@
       </li>
       <li><a href="#contact">צרו קשר</a></li>
     </ul>
+    <div class="head-social">
+        <a class="social fb" href="https://www.facebook.com/share/1Fn1AuiCTk/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="הפייסבוק של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3z"/></svg></a>
+        <a class="social ig" href="https://www.instagram.com/darca.art.sciensce?cplk=MWZzcDE2bDU1ZHczYQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="האינסטגרם של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8.2a5.4 5.4 0 0 0-1.5-3.9 5.5 5.5 0 0 0-3.9-1.5C15 2.7 9 2.7 7.5 2.8a5.5 5.5 0 0 0-3.9 1.5 5.4 5.4 0 0 0-1.5 3.9C2 9.7 2 14.3 2.1 15.8a5.4 5.4 0 0 0 1.5 3.9 5.5 5.5 0 0 0 3.9 1.5c1.5.1 7.5.1 9 0a5.4 5.4 0 0 0 3.9-1.5 5.5 5.5 0 0 0 1.5-3.9c.1-1.5.1-6.1 0-7.6zM19.8 18a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.3.4s-4.1.1-5.3-.4A3.1 3.1 0 0 1 5.8 18c-.5-1.2-.4-4-.4-5.3s-.1-4.1.4-5.3A3.1 3.1 0 0 1 7.5 5.7c1.2-.5 4-.4 5.3-.4s4.1-.1 5.3.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.3s.1 4.1-.4 5.3z"/></svg></a>
+    </div>
   </div>
 </header>
 
@@ -588,10 +597,10 @@
       <div>
         <div class="sec-head"><h2>צרו קשר</h2><p>נשמח לענות על כל שאלה.</p></div>
         <ul class="info-list">
-          <li><span>📍</span><div>כתובת: [להשלמה], טירת כרמל</div></li>
-          <li><span>☎</span><div>טלפון: [להשלמה]</div></li>
-          <li><span>✉</span><div>דוא"ל: [להשלמה]</div></li>
-          <li><span>🕗</span><div>שעות מזכירות: א'–ה' [להשלמה]</div></li>
+          <li><span>📍</span><div>דולפין 9, טירת כרמל<br><a class="waze" href="https://waze.com/ul?q=%D7%93%D7%95%D7%9C%D7%A4%D7%99%D7%9F%209%20%D7%98%D7%99%D7%A8%D7%AA%20%D7%9B%D7%A8%D7%9E%D7%9C&amp;navigate=yes" target="_blank" rel="noopener">ניווט ב-Waze</a></div></li>
+          <li><span>☎</span><div>טלפון: <a href="tel:+97246928060" dir="ltr">04-6928060</a></div></li>
+          <li><span>✉</span><div>דוא"ל: <a href="mailto:arts-sc-tc@darcaschools.co.il">arts-sc-tc@darcaschools.co.il</a></div></li>
+          <li><span>🕗</span><div>שעות פעילות: א'–ה', <span dir="ltr">8:00–16:00</span></div></li>
         </ul>
       </div>
       <form name="contact" method="POST" data-netlify="true" id="contactForm">
@@ -635,8 +644,8 @@
         <a href="https://web.mashov.info/" target="_blank" rel="noopener">משו"ב</a>
         <a href="https://darca.org.il/" target="_blank" rel="noopener">רשת דרכא</a>
         <a href="https://edu.gov.il/" target="_blank" rel="noopener">משרד החינוך</a>
-        <a href="#" >אינסטגרם</a>
-        <a href="#" >פייסבוק</a>
+        <a href="https://www.instagram.com/darca.art.sciensce?cplk=MWZzcDE2bDU1ZHczYQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener">אינסטגרם</a>
+        <a href="https://www.facebook.com/share/1Fn1AuiCTk/?mibextid=wwXIfr" target="_blank" rel="noopener">פייסבוק</a>
       </div>
     </div>
   </div>
@@ -871,13 +880,17 @@
     document.querySelectorAll('.stats .stat').forEach(el=>{const b=el.querySelector('b');b.dataset.target=b.textContent;b.textContent='0';cio.observe(el)});
   })();
 
-  // טופס: באתר Netlify נשלח באמת, בתצוגה המקדימה רק מציג תודה
+  // טופס: פותח את תוכנת הדוא"ל עם ההודעה מוכנה לשליחה לבית הספר
+  // (כשנחבר שירות טפסים כמו Formspree – ההודעה תישלח ישירות מהאתר)
   document.getElementById('contactForm').addEventListener('submit',e=>{
     e.preventDefault();
-    const f=e.target, done=()=>{f.reset();document.getElementById('thanks').style.display='block'};
-    if(location.hostname.endsWith('netlify.app')){
-      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(done).catch(done);
-    } else done();
+    const f=e.target, v=n=>f.elements[n].value.trim();
+    const body=`שם: ${v('name')}\nטלפון: ${v('phone')}\nדוא"ל: ${v('email')}\n\n${v('message')}`;
+    const href='mailto:arts-sc-tc@darcaschools.co.il?subject='+encodeURIComponent('פנייה מהאתר – '+v('name'))+'&body='+encodeURIComponent(body);
+    const t=document.getElementById('thanks');
+    t.innerHTML='נפתחה תוכנת הדוא"ל עם ההודעה – נשאר רק ללחוץ "שליחה". לא נפתח? כתבו לנו ל-<a href="mailto:arts-sc-tc@darcaschools.co.il">arts-sc-tc@darcaschools.co.il</a>';
+    t.style.display='block';
+    location.href=href;
   });
 </script>
 </body>
