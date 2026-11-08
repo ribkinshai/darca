@@ -136,7 +136,8 @@
   .tracks.three{grid-template-columns:1fr .8fr 1fr}
   .track.lead{background:linear-gradient(135deg,#e2771b 0%,var(--amber) 100%)}
   .quote{margin:18px 0 0;padding:16px 20px;border-right:4px solid var(--pink);background:var(--blush);border-radius:12px;color:var(--wine-dark);font-weight:500;font-size:1.05rem}
-  .journey .card{position:relative}
+  .journey .card{position:relative;padding-bottom:62px}
+  .journey .card .more{position:absolute;bottom:24px;right:28px;margin:0}
   .step{width:44px;height:44px;border-radius:50%;background:var(--wine);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.2rem;margin-bottom:12px}
   .journey .card:nth-child(2) .step{background:#c22a3a}.journey .card:nth-child(3) .step{background:#dd4a2a}.journey .card:nth-child(4) .step{background:var(--pink)}
   .journey h3{display:inline-block;margin-left:8px}
@@ -435,7 +436,6 @@
         <ul class="sub">
           <li><a href="#tracks">ענפי הלמידה</a></li>
           <li><a href="#spark">מקום לכל ניצוץ</a></li>
-          <li><a href="#partners">השותפים שלנו</a></li>
         </ul>
       </li>
       <li><a href="#news">חדשות ועדכונים</a></li>
@@ -550,26 +550,11 @@
         <div class="card"><div class="icon">🗳</div><h3>קול אזרחי</h3><p>מועצת תלמידים שמעצימה את התלמידים לעצב את סביבתם היומיומית.</p></div>
         <div class="card"><div class="icon">🧭</div><h3>מנהיגות שטח</h3><p>מש"צים (מדריכי של"ח צעירים): בניית חוסן ואחריות סביבתית.</p></div>
       </div>
-      <div class="pedagogy">
-        <div><b>למידה פעילה, גמישה ומותאמת</b><span>מרחב שמאפשר למורים להתאים את קצב וסגנון ההוראה לצורכי התלמיד באופן דינמי.</span></div>
-        <div><b>תוכנית אנגלית 720</b><span>אימוץ תוכנית הדגל כמנוע לשינוי שפתי וקוגניטיבי.</span></div>
-        <div><b>בהלימה ליעד הלאומי</b><span>יישור קו עם מטרות משרד החינוך לקידום מצוינות.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== שותפויות ===== -->
-  <section id="partners">
-    <div class="container">
-      <div class="sec-head"><h2>לא פועלים לבד – אקו-סיסטם של שותפויות</h2><p>השותפויות שלנו הן מכפיל כוח שמאפשר לבית הספר לצמוח, ובמרכזן תמיד עומד התלמיד.</p></div>
-      <div class="partners">
-        <span>רשת דרכא</span><span>עיריית טירת כרמל</span><span class="center">התלמיד</span><span>משרד החינוך ומחוז חיפה</span><span>צוות, הורים וקהילה</span>
-      </div>
     </div>
   </section>
 
   <!-- ===== חדשות ===== -->
-  <section id="news" class="alt">
+  <section id="news">
     <div class="container">
       <div class="sec-head"><h2>חדשות ועדכונים</h2><p>מה קורה אצלנו בבית הספר.</p></div>
       <div class="news">
@@ -581,7 +566,7 @@
   </section>
 
   <!-- ===== להורים ===== -->
-  <section id="parents">
+  <section id="parents" class="alt">
     <div class="container">
       <div class="sec-head"><h2>להורים</h2><p>כל המידע והטפסים במקום אחד.</p></div>
       <div class="cards">
