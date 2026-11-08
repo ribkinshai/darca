@@ -321,6 +321,24 @@
   .stmt-body p,.stmt-body li{color:#3d3d40}
   .todo-inline{background:#fff3cd;padding:0 6px;border-radius:4px}
 
+
+  /* ===== איור פתיחה: גל נקודות ===== */
+  .hero-art{justify-self:center;width:min(400px,78vw);aspect-ratio:1;display:grid;grid-template-columns:repeat(7,1fr);place-items:center;
+    -webkit-mask:radial-gradient(circle,#000 55%,transparent 80%);mask:radial-gradient(circle,#000 55%,transparent 80%)}
+  .hero-art span{width:14px;height:14px;border-radius:50%;background:#ec6a2c;animation:dotWave 4s ease-in-out infinite;
+    animation-delay:calc((var(--x) + var(--y)) * -.28s)}
+  @keyframes dotWave{0%,100%{transform:scale(.45);background:#f6c25a;opacity:.55}50%{transform:scale(1.5);background:#d6456e;opacity:1}}
+  html.anim .hero-art{animation:heroUp 1.2s cubic-bezier(.2,.75,.2,1) both}
+  @media (max-width:960px){.hero-art{order:-1;width:min(260px,66vw)} .hero-art span{width:11px;height:11px}}
+  @media (max-width:560px){.a11y-btn{width:44px;height:44px;left:10px;bottom:10px}.a11y-btn svg{width:24px;height:24px}.a11y-panel{left:10px;bottom:62px}}
+  /* ===== קווי הפרדה עדינים בין אזורים ===== */
+  #home > section + section:not(.motto):not(#about){position:relative}
+  #home > section + section:not(.motto):not(#about)::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:min(640px,72%);height:1px;background:linear-gradient(90deg,transparent,rgba(236,106,44,.45),rgba(158,18,67,.35),rgba(236,106,44,.45),transparent)}
+  #home > section + section:not(.motto):not(#about)::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8px;margin-left:-4px;
+    transform:rotate(45deg);background:#fff;border:1.5px solid rgba(236,106,44,.6)}
+  #home > section.motto + section::before,#home > section.motto + section::after{display:none}
+
   /* ===== אנימציות גלילה ===== */
   .progress{position:fixed;top:0;right:0;height:4px;width:0;background:var(--sunset);z-index:60;transition:width .1s linear}
   header{transition:box-shadow .3s}
@@ -430,20 +448,7 @@
           <a class="btn btn-ghost" href="#contact">צרו קשר</a>
         </div>
       </div>
-      <div class="hero-logo">
-        <img src="logo.png" alt="">
-        <svg viewBox="0 0 1254 1254" aria-hidden="true">
-          <defs><clipPath id="inner"><circle cx="624" cy="626" r="597"/></clipPath></defs>
-          <g clip-path="url(#inner)">
-            <rect x="0" y="760" width="1254" height="500" fill="#fff"/>
-            <path class="wv wv-a" d="M0,944 L31,949 L63,953 L94,957 L125,961 L157,963 L188,965 L219,967 L251,967 L282,967 L314,966 L345,964 L376,961 L408,958 L439,954 L470,950 L502,945 L533,940 L564,935 L596,930 L627,926 L658,921 L690,917 L721,913 L752,909 L784,907 L815,905 L846,903 L878,903 L909,903 L941,904 L972,906 L1003,909 L1035,912 L1066,916 L1097,920 L1129,925 L1160,930 L1191,935 L1223,940 L1254,944 L1285,949 L1317,953 L1348,957 L1379,961 L1411,963 L1442,965 L1473,967 L1505,967 L1536,967 L1567,966 L1599,964 L1630,961 L1662,958 L1693,954 L1724,950 L1756,945 L1787,940 L1818,935 L1850,930 L1881,926 L1912,921 L1944,917 L1975,913 L2006,909 L2038,907 L2069,905 L2100,903 L2132,903 L2163,903 L2194,904 L2226,906 L2257,909 L2289,912 L2320,916 L2351,920 L2383,925 L2414,930 L2445,935 L2477,940 L2508,944 L2508,1260 L0,1260 Z" fill="#f6c4cf"/>
-            <path class="wv wv-b" d="M0,1039 L31,1039 L63,1039 L94,1037 L125,1036 L157,1033 L188,1029 L219,1025 L251,1021 L282,1016 L314,1011 L345,1005 L376,1000 L408,995 L439,990 L470,985 L502,981 L533,978 L564,975 L596,973 L627,971 L658,971 L690,971 L721,973 L752,974 L784,977 L815,981 L846,985 L878,989 L909,994 L941,999 L972,1005 L1003,1010 L1035,1015 L1066,1020 L1097,1025 L1129,1029 L1160,1032 L1191,1035 L1223,1037 L1254,1039 L1285,1039 L1317,1039 L1348,1037 L1379,1036 L1411,1033 L1442,1029 L1473,1025 L1505,1021 L1536,1016 L1567,1011 L1599,1005 L1630,1000 L1662,995 L1693,990 L1724,985 L1756,981 L1787,978 L1818,975 L1850,973 L1881,971 L1912,971 L1944,971 L1975,973 L2006,974 L2038,977 L2069,981 L2100,985 L2132,989 L2163,994 L2194,999 L2226,1005 L2257,1010 L2289,1015 L2320,1020 L2351,1025 L2383,1029 L2414,1032 L2445,1035 L2477,1037 L2508,1039 L2508,1260 L0,1260 Z" fill="#ec93ad" opacity=".9"/>
-            <path class="wv wv-c" d="M0,1089 L31,1083 L63,1077 L94,1071 L125,1065 L157,1058 L188,1052 L219,1047 L251,1042 L282,1037 L314,1034 L345,1031 L376,1029 L408,1028 L439,1028 L470,1029 L502,1031 L533,1034 L564,1038 L596,1042 L627,1047 L658,1053 L690,1059 L721,1065 L752,1071 L784,1078 L815,1084 L846,1089 L878,1094 L909,1099 L941,1102 L972,1105 L1003,1107 L1035,1108 L1066,1108 L1097,1107 L1129,1105 L1160,1102 L1191,1098 L1223,1094 L1254,1089 L1285,1083 L1317,1077 L1348,1071 L1379,1065 L1411,1058 L1442,1052 L1473,1047 L1505,1042 L1536,1037 L1567,1034 L1599,1031 L1630,1029 L1662,1028 L1693,1028 L1724,1029 L1756,1031 L1787,1034 L1818,1038 L1850,1042 L1881,1047 L1912,1053 L1944,1059 L1975,1065 L2006,1071 L2038,1078 L2069,1084 L2100,1089 L2132,1094 L2163,1099 L2194,1102 L2226,1105 L2257,1107 L2289,1108 L2320,1108 L2351,1107 L2383,1105 L2414,1102 L2445,1098 L2477,1094 L2508,1089 L2508,1260 L0,1260 Z" fill="#a8074a"/>
-          </g>
-          <circle cx="624" cy="626" r="632" fill="none" stroke="#fff" stroke-width="30"/>
-          <circle cx="624" cy="626" r="603" fill="none" stroke="#ab033c" stroke-width="31"/>
-        </svg>
-      </div>
+      <div class="hero-art" aria-hidden="true"><span style="--x:0;--y:0"></span><span style="--x:1;--y:0"></span><span style="--x:2;--y:0"></span><span style="--x:3;--y:0"></span><span style="--x:4;--y:0"></span><span style="--x:5;--y:0"></span><span style="--x:6;--y:0"></span><span style="--x:0;--y:1"></span><span style="--x:1;--y:1"></span><span style="--x:2;--y:1"></span><span style="--x:3;--y:1"></span><span style="--x:4;--y:1"></span><span style="--x:5;--y:1"></span><span style="--x:6;--y:1"></span><span style="--x:0;--y:2"></span><span style="--x:1;--y:2"></span><span style="--x:2;--y:2"></span><span style="--x:3;--y:2"></span><span style="--x:4;--y:2"></span><span style="--x:5;--y:2"></span><span style="--x:6;--y:2"></span><span style="--x:0;--y:3"></span><span style="--x:1;--y:3"></span><span style="--x:2;--y:3"></span><span style="--x:3;--y:3"></span><span style="--x:4;--y:3"></span><span style="--x:5;--y:3"></span><span style="--x:6;--y:3"></span><span style="--x:0;--y:4"></span><span style="--x:1;--y:4"></span><span style="--x:2;--y:4"></span><span style="--x:3;--y:4"></span><span style="--x:4;--y:4"></span><span style="--x:5;--y:4"></span><span style="--x:6;--y:4"></span><span style="--x:0;--y:5"></span><span style="--x:1;--y:5"></span><span style="--x:2;--y:5"></span><span style="--x:3;--y:5"></span><span style="--x:4;--y:5"></span><span style="--x:5;--y:5"></span><span style="--x:6;--y:5"></span><span style="--x:0;--y:6"></span><span style="--x:1;--y:6"></span><span style="--x:2;--y:6"></span><span style="--x:3;--y:6"></span><span style="--x:4;--y:6"></span><span style="--x:5;--y:6"></span><span style="--x:6;--y:6"></span></div>
     </div>
     <!-- גל בהשראת הלוגו -->
     <svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
@@ -659,6 +664,7 @@
   const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
   burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
+
 
 
   // ===== תפריט נגישות =====
