@@ -456,6 +456,18 @@
     .sec-head::after{margin-inline:0}
   }
   @media (max-width:560px){ .brand b{white-space:normal} .brand img{width:46px;height:46px} .brand b{font-size:.92rem} .brand-wrap{gap:10px} .head-social{gap:6px} .head-social .social{width:28px;height:28px} .head-social .social svg{width:15px;height:15px} .tagline{flex-wrap:nowrap;gap:0;font-size:min(4.1vw,1.2rem);white-space:nowrap} .tagline i{display:inline;margin:0 .45em} .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
+
+  /* תפריט נייד: תתי-תפריטים סגורים, נפתחים בלחיצה (אקורדיון) */
+  @media (max-width:1240px){
+    .menu .sub{display:none}
+    .menu .has-sub.open-sub > .sub{display:block;animation:subIn .25s ease}
+    .menu .has-sub > a{display:flex!important;justify-content:space-between;align-items:center}
+    .menu .has-sub > a::after{content:"▾";font-size:.9em;transition:transform .25s}
+    .menu .has-sub.open-sub > a{color:var(--wine);background:var(--blush)}
+    .menu .has-sub.open-sub > a::after{transform:rotate(180deg)}
+    @keyframes subIn{from{opacity:0;transform:translateY(-4px)}}
+  }
+  body.menu-open .ql-tab{display:none}
 </style>
 </head>
 <body>
@@ -746,9 +758,21 @@
 <script>
   // תפריט מובייל
   const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
-  burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.body.classList.toggle('menu-open',o)});
+
+  // תפריט נייד: לחיצה על נושא פותחת/סוגרת את האפשרויות שלו (ורק אותו)
+  const mobileNav=matchMedia('(max-width:1240px)');
+  const collapseAll=()=>menu.querySelectorAll('.has-sub.open-sub').forEach(li=>{li.classList.remove('open-sub');li.firstElementChild.setAttribute('aria-expanded',false)});
+  menu.addEventListener('click',e=>{
+    const a=e.target.closest('.has-sub > a'); if(!a||!mobileNav.matches) return;
+    e.preventDefault(); e.stopPropagation();
+    const li=a.parentElement, willOpen=!li.classList.contains('open-sub');
+    collapseAll();
+    if(willOpen){ li.classList.add('open-sub'); a.setAttribute('aria-expanded',true); }
+  },true);
+  burger.addEventListener('click',collapseAll);
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    menu.classList.remove('open');burger.setAttribute('aria-expanded',false);
+    menu.classList.remove('open');burger.setAttribute('aria-expanded',false);document.body.classList.remove('menu-open');
     // סגירת תת-התפריט במחשב: מבטלים פוקוס ומסתירים עד שהעכבר יוצא מהפריט
     const li=a.closest('.has-sub'); if(li){ li.classList.add('suppress'); li.addEventListener('mouseleave',()=>li.classList.remove('suppress'),{once:true}); }
     a.blur();
