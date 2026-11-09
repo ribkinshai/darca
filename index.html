@@ -468,6 +468,10 @@
     @keyframes subIn{from{opacity:0;transform:translateY(-4px)}}
   }
   body.menu-open .ql-tab{display:none}
+  /* בועות המקצועות: רשת אחידה – שתי עמודות שוות בכל המסכים */
+  ul.sublinks{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  ul.sublinks a{width:100%;justify-content:center;padding:10px 12px!important;white-space:nowrap}
+  @media (max-width:400px){ul.sublinks a{font-size:.92rem;gap:6px;padding:10px 8px!important}}
 </style>
 </head>
 <body>
