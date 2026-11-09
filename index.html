@@ -61,6 +61,7 @@
   .has-sub > a::after{content:" ▾";font-size:.7em;color:var(--pink)}
   .sub{position:absolute;top:100%;right:0;min-width:210px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 34px rgba(122,13,51,.12);list-style:none;margin:0;padding:8px;opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s}
   .has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
+  .has-sub.suppress .sub{opacity:0!important;visibility:hidden!important;transform:translateY(6px)!important}
   .sub a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:.95rem}
   .sub a:hover{background:var(--blush);color:var(--wine)}
   .brand-wrap{display:flex;align-items:center;gap:14px}
@@ -746,7 +747,12 @@
   // תפריט מובייל
   const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
   burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
-  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    menu.classList.remove('open');burger.setAttribute('aria-expanded',false);
+    // סגירת תת-התפריט במחשב: מבטלים פוקוס ומסתירים עד שהעכבר יוצא מהפריט
+    const li=a.closest('.has-sub'); if(li){ li.classList.add('suppress'); li.addEventListener('mouseleave',()=>li.classList.remove('suppress'),{once:true}); }
+    a.blur();
+  }));
 
 
 
