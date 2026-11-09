@@ -514,7 +514,9 @@
   /* אחידות: כל קישורי הפעולה בכרטיסים באותו צבע ומשקל */
   .card .more{color:var(--wine);font-weight:700;text-decoration:none}
   a.card:hover .more{text-decoration:underline}
-  @media (max-width:560px){.ql-tab .lbl{display:none}.ql-tab{padding:12px 7px;top:22%}}
+  @media (max-width:560px){.ql-tab{padding:10px 6px;gap:6px}.ql-tab .lbl{font-size:.8rem}.ql-tab .bars i{width:15px}}
+  /* לשונית קישורים מהירים: צמודה לקו התחתון של הפס העליון */
+  .ql-tab,.ql-tab:hover{top:84px!important;transform:none!important;border-radius:0 0 14px 0}
 </style>
 </head>
 <body>
