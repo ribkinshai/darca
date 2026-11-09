@@ -501,6 +501,20 @@
   @media (max-width:1240px){.m-only{display:block}.m-only a{font-weight:700;color:var(--wine)!important}}
   /* ניווט ב-Waze: רק בטלפון/טאבלט (מכשירי מגע), לא במחשב */
   @media (hover:hover) and (pointer:fine){.waze{display:none!important}}
+  /* ===== אחידות: כפתור "למעבר/לפרטים" תמיד בתחתית הכרטיס ===== */
+  .cards > .card{display:flex;flex-direction:column;align-items:flex-start;height:100%}
+  .cards > .card > p{margin-bottom:16px}
+  .cards > .card > .more{margin-top:auto;padding-top:4px}
+  .journey .card{padding-bottom:28px}
+  .journey .card .more{position:static}
+  .journey .card h3{display:inline-block}
+  .skip{right:10px!important;top:-80px}
+  .skip:focus{top:10px}
+  .hp{left:auto!important;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden}
+  /* אחידות: כל קישורי הפעולה בכרטיסים באותו צבע ומשקל */
+  .card .more{color:var(--wine);font-weight:700;text-decoration:none}
+  a.card:hover .more{text-decoration:underline}
+  @media (max-width:560px){.ql-tab .lbl{display:none}.ql-tab{padding:12px 7px;top:22%}}
 </style>
 </head>
 <body>
@@ -643,10 +657,10 @@
     <div class="container">
       <div class="sec-head"><h2>המסע הפדגוגי השש-שנתי</h2><p>רצף אחד של תרבות ופדגוגיה, מכיתה ז' ועד י"ב. כל שלב בונה על הקודם לו.</p></div>
       <div class="cards journey">
-        <a class="card" href="#stage-exposure"><div class="step">1</div><h3>חשיפה</h3><span class="chip">ז'–ח'</span><p>פתיחת דלתות לעולמות ידע מגוונים, תוכניות גשרים וחיזוק אוריינות טכנולוגית.</p><span class="more">לפרטים</span></a>
-        <a class="card" href="#stage-experience"><div class="step">2</div><h3>התנסות</h3><span class="chip">ז'–ט'</span><p>רצועות בחירה בימי שני: למידה פעילה, סקרנות וקול התלמיד.</p><span class="more">לפרטים</span></a>
-        <a class="card" href="#stage-choice"><div class="step">3</div><h3>בחירה</h3><span class="chip">ט'</span><p>גיבוש זהות אישית, מסוגלות ותחומי עניין לקראת המעבר לתיכון.</p><span class="more">לפרטים</span></a>
-        <a class="card" href="#stage-specialization"><div class="step">4</div><h3>התמחות</h3><span class="chip">י'–י"ב</span><p>כניסה למגמות ולמסלולים אקדמיים.</p><span class="more">לפרטים</span></a>
+        <a class="card" href="#stage-exposure"><div class="step">1</div><h3>חשיפה</h3><span class="chip">ז'–ח'</span><p>פתיחת דלתות לעולמות ידע מגוונים, תוכניות גשרים וחיזוק אוריינות טכנולוגית.</p><span class="more">למעבר</span></a>
+        <a class="card" href="#stage-experience"><div class="step">2</div><h3>התנסות</h3><span class="chip">ז'–ט'</span><p>רצועות בחירה בימי שני: למידה פעילה, סקרנות וקול התלמיד.</p><span class="more">למעבר</span></a>
+        <a class="card" href="#stage-choice"><div class="step">3</div><h3>בחירה</h3><span class="chip">ט'</span><p>גיבוש זהות אישית, מסוגלות ותחומי עניין לקראת המעבר לתיכון.</p><span class="more">למעבר</span></a>
+        <a class="card" href="#stage-specialization"><div class="step">4</div><h3>התמחות</h3><span class="chip">י'–י"ב</span><p>כניסה למגמות ולמסלולים אקדמיים.</p><span class="more">למעבר</span></a>
       </div>
     </div>
   </section>
@@ -692,10 +706,10 @@
     <div class="container">
       <div class="sec-head"><h2>להורים</h2><p>כל המידע והטפסים במקום אחד.</p></div>
       <div class="cards">
-        <div class="card"><div class="icon">👥</div><h3>הנהגת הורים</h3><p>הכירו את נציגי ההורים ודרכי ההתקשרות.</p><a class="more" href="#parents-council">למידע נוסף</a></div>
-        <div class="card"><div class="icon">₪</div><h3>תשלומי הורים</h3><p>פירוט התשלומים לשנת הלימודים ואופן התשלום.</p><a class="more" href="#payments">למידע נוסף</a></div>
-        <a class="card" href="#takanon"><div class="icon">📘</div><h3>תקנון בית הספר</h3><p>חוברת התקנון, אורחות החיים ומעטפת הקליטה לשנת תשפ"ז.</p><span class="more">לצפייה ולהורדה</span></a>
-        <div class="card"><div class="icon">📄</div><h3>מידע וטפסים</h3><p>אישורים, טפסים להורדה ולוח חופשות.</p><a class="more" href="#forms">למידע נוסף</a></div>
+        <a class="card" href="#parents-council"><div class="icon">👥</div><h3>הנהגת הורים</h3><p>הכירו את נציגי ההורים ודרכי ההתקשרות.</p><span class="more">למעבר</span></a>
+        <a class="card" href="#payments"><div class="icon">₪</div><h3>תשלומי הורים</h3><p>פירוט התשלומים לשנת הלימודים ואופן התשלום.</p><span class="more">למעבר</span></a>
+        <a class="card" href="#takanon"><div class="icon">📘</div><h3>תקנון בית הספר</h3><p>חוברת התקנון, אורחות החיים ומעטפת הקליטה לשנת תשפ"ז.</p><span class="more">למעבר</span></a>
+        <a class="card" href="#forms"><div class="icon">📄</div><h3>מידע וטפסים</h3><p>אישורים, טפסים להורדה ולוח חופשות.</p><span class="more">למעבר</span></a>
       </div>
     </div>
   </section>
