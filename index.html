@@ -514,8 +514,11 @@
   /* אחידות: כל קישורי הפעולה בכרטיסים באותו צבע ומשקל */
   .card .more{color:var(--wine);font-weight:700;text-decoration:none}
   a.card:hover .more{text-decoration:underline}
-  @media (max-width:560px){.ql-tab,.ql-tab:hover{background:linear-gradient(90deg,var(--pink),var(--wine));flex-direction:row;padding:6px 12px 7px;gap:7px;border-radius:0 0 12px 0}.ql-tab .lbl{writing-mode:horizontal-tb;font-size:.8rem;line-height:1}.ql-tab .bars{gap:2.5px}.ql-tab .bars i{width:13px;height:2px}}
+  @media (max-width:560px){.ql-tab{padding:10px 6px;gap:6px}.ql-tab .lbl{font-size:.8rem}.ql-tab .bars i{width:15px}
+    /* אחרי גלילה: רק כפתור שלושת הפסים */
+    body.scrolled .ql-tab .lbl{display:none} body.scrolled .ql-tab,body.scrolled .ql-tab:hover{padding:10px 8px;top:0!important}}
   /* לשונית קישורים מהירים: צמודה לקו התחתון של הפס העליון */
+  .ql-tab{transition:top .25s,padding .2s}
   .ql-tab,.ql-tab:hover{top:84px!important;transform:none!important;border-radius:0 0 14px 0}
 </style>
 </head>
@@ -1126,7 +1129,7 @@
   (function(){
     const hdr=document.querySelector('header'), bar=document.querySelector('.progress');
     const onScroll=()=>{
-      hdr.classList.toggle('scrolled',scrollY>10);
+      hdr.classList.toggle('scrolled',scrollY>10); document.body.classList.toggle('scrolled',scrollY>60);
       const max=document.documentElement.scrollHeight-innerHeight;
       bar.style.width=(max>0?scrollY/max*100:0)+'%';
     };
