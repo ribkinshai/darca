@@ -436,7 +436,7 @@
   /* תפריט: בלי שבירת שורות; במסכים בינוניים עוברים לתפריט המבורגר */
   .menu > li > a{white-space:nowrap;padding:10px 12px}
   .brand b{white-space:nowrap}
-  @media (max-width:1240px){
+  @media (max-width:1300px){
     .burger{display:block;order:3}
     .menu{position:fixed;inset:84px 0 auto 0;background:#fff;flex-direction:column;padding:12px 4%;border-bottom:1px solid var(--line);max-height:calc(100vh - 84px);overflow:auto;display:none}
     .menu.open{display:flex}
@@ -458,7 +458,7 @@
   @media (max-width:560px){ .brand b{white-space:normal} .brand img{width:46px;height:46px} .brand b{font-size:.92rem} .brand-wrap{gap:10px} .head-social{gap:6px} .head-social .social{width:28px;height:28px} .head-social .social svg{width:15px;height:15px} .tagline{flex-wrap:nowrap;gap:0;font-size:min(4.1vw,1.2rem);white-space:nowrap} .tagline i{display:inline;margin:0 .45em} .stats,.row2{grid-template-columns:1fr} .brand span{display:none} }
 
   /* תפריט נייד: תתי-תפריטים סגורים, נפתחים בלחיצה (אקורדיון) */
-  @media (max-width:1240px){
+  @media (max-width:1300px){
     .menu .sub{display:none}
     .menu .has-sub.open-sub > .sub{display:block;animation:subIn .25s ease}
     .menu .has-sub > a{display:flex!important;justify-content:space-between;align-items:center}
@@ -481,7 +481,7 @@
   .has-sub2:hover > .sub2,.has-sub2:focus-within > .sub2{opacity:1;visibility:visible;transform:none}
   .has-sub.suppress .sub2{opacity:0!important;visibility:hidden!important}
   .sub-soon{display:block;padding:8px 12px;color:var(--gray);font-size:.9rem}
-  @media (max-width:1240px){
+  @media (max-width:1300px){
     .sub2{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 14px 4px;display:none;max-height:none}
     .has-sub2.open-sub2 > .sub2{display:block}
     .has-sub2 > a::after{content:"▾";transition:transform .25s}
@@ -498,7 +498,7 @@
   .thanks.err{background:#fff3cd;color:#7a5a12}
   button[disabled]{opacity:.7;cursor:wait}
   .m-only{display:none}
-  @media (max-width:1240px){.m-only{display:block}.m-only a{font-weight:700;color:var(--wine)!important}}
+  @media (max-width:1300px){.m-only{display:block}.m-only a{font-weight:700;color:var(--wine)!important}}
   /* ניווט ב-Waze: רק בטלפון/טאבלט (מכשירי מגע), לא במחשב */
   @media (hover:hover) and (pointer:fine){.waze{display:none!important}}
   /* ===== אחידות: כפתור "למעבר/לפרטים" תמיד בתחתית הכרטיס ===== */
@@ -520,6 +520,23 @@
   /* לשונית קישורים מהירים: צמודה לקו התחתון של הפס העליון */
   .ql-tab{transition:top .25s,padding .2s}
   .ql-tab,.ql-tab:hover{top:84px!important;transform:none!important;border-radius:0 0 14px 0}
+  /* ===== קישורים מהירים במחשב: כפתור אופקי בפס העליון, מימין ללוגו ===== */
+  .ql-hbtn{display:none}
+  @media (min-width:961px){
+    .ql-tab{display:none!important}
+    .ql-hbtn{display:inline-flex;align-items:center;gap:8px;flex:none;border:0;cursor:pointer;font:inherit;font-size:.92rem;font-weight:500;
+      color:#fff;background:linear-gradient(135deg,var(--wine),var(--pink));padding:8px 14px;border-radius:99px;
+      box-shadow:0 6px 16px rgba(158,18,67,.2);transition:transform .2s,box-shadow .2s;margin-inline-end:4px}
+    .ql-hbtn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(158,18,67,.28)}
+    .ql-hbtn .bars{display:grid;gap:3px}.ql-hbtn .bars i{display:block;width:15px;height:2px;border-radius:2px;background:#fff}
+    .nav{gap:22px}
+    .menu > li > a{padding:10px 8px;font-size:.95rem}
+    .brand b{font-size:.98rem}
+    .brand img{width:56px;height:56px}
+    .brand-wrap{gap:10px}
+    .ql-drawer{left:auto;right:0;transform:translateX(105%);box-shadow:-12px 0 40px rgba(122,13,51,.15)}
+    .ql-drawer.open{transform:none}
+  }
 </style>
 </head>
 <body>
@@ -528,6 +545,9 @@
 
 <header>
   <div class="container nav">
+    <button class="ql-hbtn" type="button" aria-expanded="false" aria-controls="qlDrawer">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span>קישורים מהירים</span>
+    </button>
     <div class="brand-wrap">
       <a class="brand" href="#top" aria-label="לעמוד הבית">
       <img src="logo.png" alt="לוגו בית ספר דרכא לאמנויות ולמדעים טירת כרמל">
@@ -844,7 +864,7 @@
     ul.prepend(li);
   });
   // תפריט נייד: לחיצה על נושא פותחת/סוגרת את האפשרויות שלו (ורק אותו)
-  const mobileNav=matchMedia('(max-width:1240px)');
+  const mobileNav=matchMedia('(max-width:1300px)');
   const collapseAll=()=>menu.querySelectorAll('.open-sub,.open-sub2').forEach(li=>{li.classList.remove('open-sub','open-sub2');li.firstElementChild.setAttribute('aria-expanded',false)});
   menu.addEventListener('click',e=>{
     if(!mobileNav.matches) return;
@@ -873,18 +893,19 @@
 
   // ===== קישורים מהירים =====
   (function(){
-    const tab=document.querySelector('.ql-tab'), dr=document.getElementById('qlDrawer'), ov=document.querySelector('.ql-overlay');
+    const trig=[...document.querySelectorAll('.ql-tab,.ql-hbtn')], dr=document.getElementById('qlDrawer'), ov=document.querySelector('.ql-overlay');
+    let last=trig[0];
     const set=v=>{
       ov.hidden=false; requestAnimationFrame(()=>{ dr.classList.toggle('open',v); ov.classList.toggle('open',v); });
-      tab.setAttribute('aria-expanded',v); dr.setAttribute('aria-hidden',!v);
-      if(v) setTimeout(()=>dr.querySelector('.ql-close').focus(),50); else tab.focus();
+      trig.forEach(t=>t.setAttribute('aria-expanded',v)); dr.setAttribute('aria-hidden',!v);
+      if(v) setTimeout(()=>dr.querySelector('.ql-close').focus(),50); else last.focus();
     };
-    tab.addEventListener('click',()=>set(!dr.classList.contains('open')));
+    trig.forEach(t=>t.addEventListener('click',()=>{ last=t; set(!dr.classList.contains('open')); }));
     dr.querySelector('.ql-close').addEventListener('click',()=>set(false));
     ov.addEventListener('click',()=>set(false));
     document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&dr.classList.contains('open')) set(false); });
     dr.querySelectorAll('a.soon').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
-    dr.querySelectorAll('a.ql-int').forEach(a=>a.addEventListener('click',()=>{dr.classList.remove('open');ov.classList.remove('open');tab.setAttribute('aria-expanded',false);dr.setAttribute('aria-hidden',true);}));
+    dr.querySelectorAll('a.ql-int').forEach(a=>a.addEventListener('click',()=>{dr.classList.remove('open');ov.classList.remove('open');trig.forEach(t=>t.setAttribute('aria-expanded',false));dr.setAttribute('aria-hidden',true);}));
   })();
 
   // ===== תפריט נגישות =====
