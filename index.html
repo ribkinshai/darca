@@ -524,7 +524,7 @@
   .ql-hbtn{display:none}
   @media (min-width:961px){
     .ql-tab{display:none!important}
-    .ql-hbtn{display:inline-flex;align-items:center;gap:8px;flex:none;border:0;cursor:pointer;font:inherit;font-size:.92rem;font-weight:500;
+    .ql-hbtn{order:5;display:inline-flex;align-items:center;gap:8px;flex:none;border:0;cursor:pointer;font:inherit;font-size:.92rem;font-weight:500;
       color:#fff;background:linear-gradient(135deg,var(--wine),var(--pink));padding:8px 14px;border-radius:99px;
       box-shadow:0 6px 16px rgba(158,18,67,.2);transition:transform .2s,box-shadow .2s;margin-inline-end:4px}
     .ql-hbtn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(158,18,67,.28)}
@@ -536,12 +536,10 @@
     .ql-hbtn{padding:7px 14px!important;border-radius:14px!important;font-size:.85rem!important}
     .ql-hbtn .hl{line-height:1.15;text-align:right}
     .menu{flex:none}
-    .ql-drawer{left:auto;right:0;transform:translateX(105%);box-shadow:-12px 0 40px rgba(122,13,51,.15)}
-    .ql-drawer.open{transform:none}
   }
   /* מחשב: אחרי גלילה הכפתור "רץ" עם הדף – רק שלושה פסים, בפינה הימנית העליונה */
   @media (min-width:961px){
-    body.scrolled .ql-tab{display:flex!important;left:auto;right:0;top:0!important;border-radius:0 0 0 14px;padding:13px 12px;
+    body.scrolled .ql-tab{display:flex!important;left:0;right:auto;top:0!important;border-radius:0 0 14px 0;padding:13px 12px;
       background:linear-gradient(135deg,var(--wine),var(--pink))}
     body.scrolled .ql-tab .lbl{display:none}
     body.scrolled .ql-tab .bars i{width:18px}
@@ -555,9 +553,6 @@
 
 <header>
   <div class="container nav">
-    <button class="ql-hbtn" type="button" aria-expanded="false" aria-controls="qlDrawer">
-      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="hl">קישורים<br>מהירים</span>
-    </button>
     <div class="brand-wrap">
       <a class="brand" href="#top" aria-label="לעמוד הבית">
       <img src="logo.png" alt="לוגו בית ספר דרכא לאמנויות ולמדעים טירת כרמל">
@@ -632,6 +627,9 @@
         <a class="social fb" href="https://www.facebook.com/share/1Fn1AuiCTk/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="הפייסבוק של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3z"/></svg></a>
         <a class="social ig" href="https://www.instagram.com/darca.art.sciensce?cplk=MWZzcDE2bDU1ZHczYQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="האינסטגרם של בית הספר"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8.2a5.4 5.4 0 0 0-1.5-3.9 5.5 5.5 0 0 0-3.9-1.5C15 2.7 9 2.7 7.5 2.8a5.5 5.5 0 0 0-3.9 1.5 5.4 5.4 0 0 0-1.5 3.9C2 9.7 2 14.3 2.1 15.8a5.4 5.4 0 0 0 1.5 3.9 5.5 5.5 0 0 0 3.9 1.5c1.5.1 7.5.1 9 0a5.4 5.4 0 0 0 3.9-1.5 5.5 5.5 0 0 0 1.5-3.9c.1-1.5.1-6.1 0-7.6zM19.8 18a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.3.4s-4.1.1-5.3-.4A3.1 3.1 0 0 1 5.8 18c-.5-1.2-.4-4-.4-5.3s-.1-4.1.4-5.3A3.1 3.1 0 0 1 7.5 5.7c1.2-.5 4-.4 5.3-.4s4.1-.1 5.3.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.3s.1 4.1-.4 5.3z"/></svg></a>
     </div>
+    <button class="ql-hbtn" type="button" aria-expanded="false" aria-controls="qlDrawer">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="hl">קישורים<br>מהירים</span>
+    </button>
   </div>
 </header>
 
