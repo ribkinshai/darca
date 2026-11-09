@@ -771,6 +771,10 @@
     if(willOpen){ li.classList.add('open-sub'); a.setAttribute('aria-expanded',true); }
   },true);
   burger.addEventListener('click',collapseAll);
+  // סגירת התפריט בלחיצה מחוץ לו (או ב-Esc)
+  const closeMenu=()=>{ if(!menu.classList.contains('open')) return; menu.classList.remove('open'); burger.setAttribute('aria-expanded',false); document.body.classList.remove('menu-open'); collapseAll(); };
+  document.addEventListener('click',e=>{ if(!e.target.closest('#menu')&&!e.target.closest('.burger')) closeMenu(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
     menu.classList.remove('open');burger.setAttribute('aria-expanded',false);document.body.classList.remove('menu-open');
     // סגירת תת-התפריט במחשב: מבטלים פוקוס ומסתירים עד שהעכבר יוצא מהפריט
