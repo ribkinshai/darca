@@ -164,7 +164,7 @@
   .contact{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
   .info-list{list-style:none;padding:0;margin:0}
   .info-list li{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
-  .info-list span{color:var(--wine);font-size:1.2rem}
+  .info-list li > span{color:var(--wine);font-size:1.2rem}
   form{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(122,13,51,.06)}
   label{display:block;font-weight:500;margin-bottom:4px}
   input,textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font:inherit;margin-bottom:14px}
@@ -499,6 +499,8 @@
   button[disabled]{opacity:.7;cursor:wait}
   .m-only{display:none}
   @media (max-width:1240px){.m-only{display:block}.m-only a{font-weight:700;color:var(--wine)!important}}
+  /* ניווט ב-Waze: רק בטלפון/טאבלט (מכשירי מגע), לא במחשב */
+  @media (hover:hover) and (pointer:fine){.waze{display:none!important}}
 </style>
 </head>
 <body>
