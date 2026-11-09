@@ -472,6 +472,33 @@
   ul.sublinks{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
   ul.sublinks a{width:100%;justify-content:center;padding:10px 12px!important;white-space:nowrap}
   @media (max-width:400px){ul.sublinks a{font-size:.92rem;gap:6px;padding:10px 8px!important}}
+  /* ===== תפריט משנה מקונן (מקצועות / מגמות) ===== */
+  .sub li{position:relative}
+  .has-sub2 > a{display:flex!important;justify-content:space-between;align-items:center;gap:10px}
+  .has-sub2 > a::after{content:"‹";font-size:1.1em;color:var(--pink)}
+  .sub2{position:absolute;top:-8px;right:100%;min-width:200px;background:#fff;border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 14px 34px rgba(122,13,51,.12);list-style:none;margin:0;padding:8px;opacity:0;visibility:hidden;transform:translateX(-6px);transition:.18s;max-height:70vh;overflow:auto}
+  .has-sub2:hover > .sub2,.has-sub2:focus-within > .sub2{opacity:1;visibility:visible;transform:none}
+  .has-sub.suppress .sub2{opacity:0!important;visibility:hidden!important}
+  .sub-soon{display:block;padding:8px 12px;color:var(--gray);font-size:.9rem}
+  @media (max-width:1240px){
+    .sub2{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 14px 4px;display:none;max-height:none}
+    .has-sub2.open-sub2 > .sub2{display:block}
+    .has-sub2 > a::after{content:"▾";transition:transform .25s}
+    .has-sub2.open-sub2 > a::after{transform:rotate(180deg)}
+  }
+  /* עמודי אינדקס */
+  .sp-index{padding:40px 0 70px}
+  .sp-index .lead{font-size:1.15rem;max-width:820px;margin:0 0 26px}
+  .idx-card h3{margin-bottom:6px}
+  .idx-card .chip{margin-bottom:8px;display:inline-block}
+  #subpage #contact-sec .sec-head h2{display:none}
+  #subpage [data-reveal]{opacity:1!important;transform:none!important}
+  .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+  .thanks.err{background:#fff3cd;color:#7a5a12}
+  button[disabled]{opacity:.7;cursor:wait}
+  .m-only{display:none}
+  @media (max-width:1240px){.m-only{display:block}.m-only a{font-weight:700;color:var(--wine)!important}}
 </style>
 </head>
 <body>
@@ -488,40 +515,64 @@
     </div>
     <button class="burger" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="menu">☰</button>
     <ul class="menu" id="menu">
-      <li class="has-sub"><a href="#about">אודותינו</a>
+      <li class="has-sub"><a href="#about-us">אודותינו</a>
         <ul class="sub">
-          <li><a href="#about">אודות בית הספר</a></li>
-          <li><a href="#about">דבר המנהל/ת</a></li>
-          <li><a href="#about">חזון בית הספר</a></li>
+          <li><a href="#about-school">אודות בית הספר</a></li>
+          <li><a href="#principal">דבר ההנהלה</a></li>
+          <li><a href="#vision">חזון בית הספר</a></li>
+          <li><a href="#staff">צוות בית הספר</a></li>
           <li><a href="#spark">מקום לכל ניצוץ</a></li>
-          <li><a href="#about">צוות בית הספר</a></li>
           <li><a href="#takanon">תקנון בית הספר</a></li>
-          <li><a href="#about">לוח שיעורים</a></li>
+          <li><a href="#schedule">לוח שיעורים</a></li>
         </ul>
       </li>
-      <li class="has-sub"><a href="#stage-exposure">חטיבת הנעורים</a>
+      <li class="has-sub"><a href="#middle-school">חטיבת הנעורים</a>
         <ul class="sub">
-          <li><a href="#stage-exposure">חשיפה (ז'–ח')</a></li>
-          <li><a href="#stage-experience">התנסות (ז'–ט')</a></li>
-          <li><a href="#stage-choice">בחירה (ט')</a></li>
+          <li><a href="#grade-7">שכבת ז'</a></li>
+          <li><a href="#grade-8">שכבת ח'</a></li>
+          <li><a href="#grade-9">שכבת ט'</a></li>
+          <li class="has-sub2"><a href="#subjects">מקצועות הלימוד</a>
+            <ul class="sub2">
+              <!-- מקצועות חטיבת הנעורים יתווספו כאן -->
+              <li><span class="sub-soon">המקצועות יתווספו בקרוב</span></li>
+            </ul>
+          </li>
         </ul>
       </li>
-      <li class="has-sub"><a href="#stage-specialization">חטיבה עליונה</a>
+      <li class="has-sub"><a href="#high-school">חטיבה עליונה</a>
         <ul class="sub">
-          <li><a href="#stage-specialization">התמחות (י'–י"ב)</a></li>
+          <li><a href="#grade-10">שכבת י'</a></li>
+          <li class="has-sub2"><a href="#majors">מגמות הלימוד</a>
+            <ul class="sub2">
+              <li><a href="#art-dance">מחול</a></li>
+              <li><a href="#art-music">מוזיקה</a></li>
+              <li><a href="#art-theater">תיאטרון</a></li>
+              <li><a href="#art-film">קולנוע</a></li>
+              <li><a href="#art-media">תקשורת</a></li>
+              <li><a href="#art-visual">אמנות</a></li>
+              <li><a href="#sci-physics">פיזיקה</a></li>
+              <li><a href="#sci-cs">מדעי המחשב</a></li>
+              <li><a href="#sci-biology">ביולוגיה</a></li>
+              <li><a href="#sci-environment">אדם וסביבה</a></li>
+            </ul>
+          </li>
+          <li><a href="#bagrut">בגרויות</a></li>
         </ul>
       </li>
-      <li class="has-sub"><a href="#tracks">אמנויות ומדעים</a>
+      <li class="has-sub"><a href="#arts-sciences">אמנויות ומדעים</a>
         <ul class="sub">
-          <li><a href="#tracks">ענפי הלמידה</a></li>
+          <li><a href="#arts">אמנויות ויצירה</a></li>
+          <li><a href="#sciences">מדעים ולוגיקה</a></li>
+          <li><a href="#journey">המסע השש-שנתי</a></li>
         </ul>
       </li>
-      <li><a href="#news">חדשות ועדכונים</a></li>
-      <li class="has-sub"><a href="#parents">להורים</a>
+      <li><a href="#news-page">חדשות ועדכונים</a></li>
+      <li class="has-sub"><a href="#parents-info">להורים</a>
         <ul class="sub">
-          <li><a href="#parents">הנהגת הורים</a></li>
-          <li><a href="#parents">תשלומי הורים</a></li>
-          <li><a href="#parents">מידע וטפסים</a></li>
+          <li><a href="#parents-council">הנהגת הורים</a></li>
+          <li><a href="#payments">תשלומי הורים</a></li>
+          <li><a href="#forms">מידע וטפסים</a></li>
+          <li><a href="#takanon">תקנון בית הספר</a></li>
         </ul>
       </li>
       <li><a href="#contact">צרו קשר</a></li>
@@ -639,10 +690,10 @@
     <div class="container">
       <div class="sec-head"><h2>להורים</h2><p>כל המידע והטפסים במקום אחד.</p></div>
       <div class="cards">
-        <div class="card"><div class="icon">👥</div><h3>הנהגת הורים</h3><p>הכירו את נציגי ההורים ודרכי ההתקשרות.</p><a class="more" href="#parents">למידע נוסף</a></div>
-        <div class="card"><div class="icon">₪</div><h3>תשלומי הורים</h3><p>פירוט התשלומים לשנת הלימודים ואופן התשלום.</p><a class="more" href="#parents">למידע נוסף</a></div>
+        <div class="card"><div class="icon">👥</div><h3>הנהגת הורים</h3><p>הכירו את נציגי ההורים ודרכי ההתקשרות.</p><a class="more" href="#parents-council">למידע נוסף</a></div>
+        <div class="card"><div class="icon">₪</div><h3>תשלומי הורים</h3><p>פירוט התשלומים לשנת הלימודים ואופן התשלום.</p><a class="more" href="#payments">למידע נוסף</a></div>
         <a class="card" href="#takanon"><div class="icon">📘</div><h3>תקנון בית הספר</h3><p>חוברת התקנון, אורחות החיים ומעטפת הקליטה לשנת תשפ"ז.</p><span class="more">לצפייה ולהורדה</span></a>
-        <div class="card"><div class="icon">📄</div><h3>מידע וטפסים</h3><p>אישורים, טפסים להורדה ולוח חופשות.</p><a class="more" href="#parents">למידע נוסף</a></div>
+        <div class="card"><div class="icon">📄</div><h3>מידע וטפסים</h3><p>אישורים, טפסים להורדה ולוח חופשות.</p><a class="more" href="#forms">למידע נוסף</a></div>
       </div>
     </div>
   </section>
@@ -653,7 +704,7 @@
   </section>
 
   <!-- ===== צרו קשר ===== -->
-  <section id="contact" class="alt">
+  <section id="contact-sec" class="alt">
     <div class="container contact">
       <div>
         <div class="sec-head"><h2>צרו קשר</h2><p>נשמח לענות על כל שאלה.</p></div>
@@ -664,8 +715,8 @@
           <li><span>🕗</span><div>שעות פעילות: א'–ה', <span dir="ltr">8:00–16:00</span></div></li>
         </ul>
       </div>
-      <form name="contact" method="POST" data-netlify="true" id="contactForm">
-        <input type="hidden" name="form-name" value="contact">
+      <form id="contactForm">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="row2">
           <div><label for="name">שם מלא</label><input id="name" name="name" required></div>
           <div><label for="phone">טלפון</label><input id="phone" name="phone" type="tel"></div>
@@ -692,12 +743,12 @@
     <div>
       <h4>ניווט</h4>
       <ul>
-        <li><a href="#about">אודותינו</a></li>
-        <li><a href="#stage-exposure">חטיבת הנעורים</a></li>
-        <li><a href="#stage-specialization">חטיבה עליונה</a></li>
-        <li><a href="#tracks">אמנויות ומדעים</a></li>
-        <li><a href="#news">חדשות ועדכונים</a></li>
-        <li><a href="#parents">להורים</a></li>
+        <li><a href="#about-us">אודותינו</a></li>
+        <li><a href="#middle-school">חטיבת הנעורים</a></li>
+        <li><a href="#high-school">חטיבה עליונה</a></li>
+        <li><a href="#arts-sciences">אמנויות ומדעים</a></li>
+        <li><a href="#news-page">חדשות ועדכונים</a></li>
+        <li><a href="#parents-info">להורים</a></li>
       </ul>
     </div>
     <div>
@@ -764,11 +815,21 @@
   const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
   burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.body.classList.toggle('menu-open',o)});
 
+  // בנייד הלחיצה על נושא פותחת אותו, לכן מוסיפים בראש כל תת-תפריט קישור לעמוד הנושא עצמו
+  menu.querySelectorAll('.has-sub > a, .has-sub2 > a').forEach(a=>{
+    const ul=a.nextElementSibling; if(!ul) return;
+    const li=document.createElement('li'); li.className='m-only';
+    li.innerHTML=`<a href="${a.getAttribute('href')}">לעמוד ${a.textContent.trim()}</a>`;
+    ul.prepend(li);
+  });
   // תפריט נייד: לחיצה על נושא פותחת/סוגרת את האפשרויות שלו (ורק אותו)
   const mobileNav=matchMedia('(max-width:1240px)');
-  const collapseAll=()=>menu.querySelectorAll('.has-sub.open-sub').forEach(li=>{li.classList.remove('open-sub');li.firstElementChild.setAttribute('aria-expanded',false)});
+  const collapseAll=()=>menu.querySelectorAll('.open-sub,.open-sub2').forEach(li=>{li.classList.remove('open-sub','open-sub2');li.firstElementChild.setAttribute('aria-expanded',false)});
   menu.addEventListener('click',e=>{
-    const a=e.target.closest('.has-sub > a'); if(!a||!mobileNav.matches) return;
+    if(!mobileNav.matches) return;
+    const a2=e.target.closest('.has-sub2 > a');
+    if(a2){ e.preventDefault(); e.stopPropagation(); const li2=a2.parentElement, o=li2.classList.toggle('open-sub2'); a2.setAttribute('aria-expanded',o); return; }
+    const a=e.target.closest('.has-sub > a'); if(!a) return;
     e.preventDefault(); e.stopPropagation();
     const li=a.parentElement, willOpen=!li.classList.contains('open-sub');
     collapseAll();
@@ -837,11 +898,6 @@
 
   // ===== עמודי משנה =====
   // כדי לעדכן תוכן של עמוד: לשנות כאן את intro / items. todo = הערה פנימית שתוצג עד שימולא תוכן אמיתי (למחוק כשמוכן).
-  const GROUPS={
-    journey:{name:'המסע השש-שנתי',back:'#grades'},
-    arts:{name:'אמנויות ויצירה',back:'#tracks'},
-    sci:{name:'מדעים ולוגיקה',back:'#tracks'}
-  };
   const PAGES={
     'stage-exposure':{g:'journey',title:'חשיפה',tag:"שכבות ז'–ח'",
       intro:'השלב הראשון במסע: פתיחת דלתות לעולמות ידע מגוונים. התלמידים מכירים את תחומי האמנויות והמדעים של בית הספר, ובונים בסיס רחב לקראת ההמשך.',
@@ -872,29 +928,90 @@
     'sci-biology':{g:'sci',title:'ביולוגיה',intro:'מגמת הביולוגיה חוקרת את עולם החי, מהתא ועד המערכת האקולוגית.',items:['ביולוגיה של התא ושל האדם','מעבדה וחקר','סיורים ועבודת שדה'],todo:'להשלמה: תיאור המגמה וצוות.'},
     'sci-environment':{g:'sci',title:'אדם וסביבה',intro:'מגמת אדם וסביבה עוסקת בקשר בין האדם לסביבה שבה הוא חי, ובאחריות שלנו כלפיה.',items:['סביבה וקיימות','חקר שטח','מעורבות בקהילה'],todo:'להשלמה: תיאור המגמה ופרויקטים.'}
   };
+  // ===== מבנה האתר: כל העמודים והקשרים ביניהם =====
+  // p = עמוד האב (לפירורי הלחם ולכפתור "חזרה"). kind:'index' = עמוד שמציג כרטיסים של עמודי המשנה שלו.
+  // כדי להוסיף תוכן לעמוד: למלא intro (פסקה) ו-items (רשימה), ולמחוק את todo.
+  const T='התוכן לעמוד זה יתווסף בקרוב.';
+  const NODES={
+    'about-us':{title:'אודותינו',kind:'index',intro:'הכירו את בית ספר דרכא לאמנויות ולמדעים בטירת כרמל: החזון, ההנהלה, הצוות וכללי בית הספר.'},
+    'about-school':{p:'about-us',title:'אודות בית הספר',intro:'בית ספר דרכא לאמנויות ולמדעים בטירת כרמל הוא בית ספר שש-שנתי ברשת דרכא, מכיתה ז\' ועד י"ב, שמחבר בין עולם היצירה לעולם החקר המדעי.',todo:'להשלמה: היסטוריה, נתונים ותמונות של בית הספר.'},
+    'principal':{p:'about-us',title:'דבר ההנהלה',todo:'להשלמה: דבר מנהל בית הספר ומנהלת חטיבת הנעורים.'},
+    'vision':{p:'about-us',title:'חזון בית הספר',intro:'רואים את האדם. מעצבים דרך. יוצרים משמעות.',todo:'להשלמה: נוסח החזון המלא.'},
+    'staff':{p:'about-us',title:'צוות בית הספר',todo:'להשלמה: בעלי התפקידים והצוות החינוכי.'},
+    'spark':{p:'about-us',title:'מקום לכל ניצוץ',special:'spark',desc:'חינוך חברתי ומעורבות'},
+    'takanon':{p:'about-us',title:'תקנון בית הספר',special:'takanon',desc:'חוברת התקנון לשנת תשפ"ז'},
+    'schedule':{p:'about-us',title:'לוח שיעורים',todo:'להשלמה: מערכת השעות וזמני הצלצולים.'},
+
+    'middle-school':{title:'חטיבת הנעורים',kind:'index',tag:"שכבות ז'–ט'",intro:'קליטה רכה מבית הספר היסודי, הקניית מיומנויות ניהול עצמי, פיתוח עצמאות בלמידה וביסוס תחושת מסוגלות.'},
+    'grade-7':{p:'middle-school',title:"שכבת ז'",todo:"להשלמה: מידע על שכבת ז', רכזת השכבה ופעילויות."},
+    'grade-8':{p:'middle-school',title:"שכבת ח'",todo:"להשלמה: מידע על שכבת ח', רכזת השכבה ופעילויות."},
+    'grade-9':{p:'middle-school',title:"שכבת ט'",todo:"להשלמה: מידע על שכבת ט', רכז השכבה ופעילויות."},
+    'subjects':{p:'middle-school',title:'מקצועות הלימוד',kind:'index',todo:'להשלמה: רשימת מקצועות הלימוד בחטיבת הנעורים. כל מקצוע יקבל עמוד משלו.'},
+
+    'high-school':{title:'חטיבה עליונה',kind:'index',tag:"שכבות י'–י\"ב",intro:'התמקצעות במגמות הלימוד, פיתוח תפקודי לומד בוגר, לקיחת אחריות אישית והיערכות לבחינות הבגרות.'},
+    'grade-10':{p:'high-school',title:"שכבת י'",todo:"להשלמה: מידע על שכבת י', רכז השכבה ופעילויות."},
+    'majors':{p:'high-school',title:'מגמות הלימוד',kind:'index',intro:'עשר מגמות באמנויות ובמדעים. בחרו מגמה כדי לקרוא עליה.'},
+    'bagrut':{p:'high-school',title:'בגרויות',todo:'להשלמה: מידע על בחינות הבגרות, לוח מבחנים ונהלים.'},
+
+    'arts-sciences':{title:'אמנויות ומדעים',kind:'index',intro:'המקום שבו מדע, טכנולוגיה, אמנות ויצירה נפגשים, כדי לעצב אזרחי עתיד בעלי אופקים רחבים.'},
+    'arts':{p:'arts-sciences',title:'אמנויות ויצירה',kind:'index',links:['art-dance','art-music','art-theater','art-film','art-media','art-visual'],intro:'מרחב ליצירה, לביטוי אישי ולפיתוח קול אמנותי.'},
+    'sciences':{p:'arts-sciences',title:'מדעים ולוגיקה',kind:'index',links:['sci-physics','sci-cs','sci-biology','sci-environment'],intro:'למידה מבוססת חקר, ניסוי ופתרון בעיות.'},
+    'journey':{p:'arts-sciences',title:'המסע הפדגוגי השש-שנתי',kind:'index',intro:'רצף אחד של תרבות ופדגוגיה, מכיתה ז\' ועד י"ב. כל שלב בונה על הקודם לו.'},
+
+    'news-page':{title:'חדשות ועדכונים',todo:'להשלמה: חדשות, אירועים ועדכונים מבית הספר.'},
+
+    'parents-info':{title:'להורים',kind:'index',links:['takanon'],intro:'כל המידע והטפסים במקום אחד.'},
+    'parents-council':{p:'parents-info',title:'הנהגת הורים',todo:'להשלמה: נציגי ההורים ודרכי ההתקשרות.'},
+    'payments':{p:'parents-info',title:'תשלומי הורים',todo:'להשלמה: פירוט התשלומים וקישור למערכת התשלום.'},
+    'forms':{p:'parents-info',title:'מידע וטפסים',todo:'להשלמה: אישורים, טפסים להורדה ולוח חופשות.'},
+
+    'contact':{title:'צרו קשר',special:'contact'},
+    'accessibility':{title:'הצהרת נגישות',special:'statement'}
+  };
+  // עמודי השלבים והמגמות (מהאובייקט PAGES שלמעלה)
+  Object.entries(PAGES).forEach(([k,v])=>{ NODES[k]=Object.assign({},v,{p:v.g==='journey'?'journey':'majors'}); });
+
   const home=document.getElementById('home'), sub=document.getElementById('subpage');
+  const kids=id=>{ const n=NODES[id]; const own=Object.keys(NODES).filter(k=>NODES[k].p===id); return own.concat((n.links||[]).filter(k=>!own.includes(k))); };
+  function chain(id){ const out=[]; let n=NODES[id]; while(n&&n.p){ out.unshift(n.p); n=NODES[n.p]; } return out; }
+  function head(id){
+    const n=NODES[id];
+    const crumbs=['<a href="#top">דף הבית</a>'].concat(chain(id).map(k=>`<a href="#${k}">${NODES[k].title}</a>`)).concat([n.title]).join(' › ');
+    return `<div class="sp-head"><div class="container"><div class="crumbs">${crumbs}</div><h1>${n.title}</h1>${n.tag?`<span class="chip">${n.tag}</span>`:''}</div></div>`;
+  }
+  const backTo=id=>{ const pid=NODES[id].p; return pid?`<a class="btn btn-ghost back" href="#${pid}">חזרה ל${NODES[pid].title}</a>`:`<a class="btn btn-ghost back" href="#top">חזרה לדף הבית</a>`; };
+  function siblings(id){
+    const pid=NODES[id].p; if(!pid) return '';
+    const sib=kids(pid); if(sib.length<2) return '';
+    return `<div class="container siblings"><h3>עוד ב${NODES[pid].title}</h3><div class="chips">${sib.map(k=>`<a class="chip${k===id?' on':''}" href="#${k}">${NODES[k].title}</a>`).join('')}</div></div>`;
+  }
+  function renderIndex(id){
+    const n=NODES[id], list=kids(id);
+    const cards=list.map(k=>{const c=NODES[k];return `<a class="card idx-card" href="#${k}"><h3>${c.title}</h3>${c.tag?`<span class="chip">${c.tag}</span>`:''}<p>${c.desc||(c.intro?c.intro.slice(0,90)+(c.intro.length>90?'…':''):'')}</p><span class="more">למעבר</span></a>`}).join('');
+    sub.innerHTML=head(id)+`<div class="container sp-index">
+      ${n.intro?`<p class="lead">${n.intro}</p>`:''}
+      ${cards?`<div class="cards">${cards}</div>`:''}
+      ${n.todo?`<div class="todo">${n.todo}</div>`:''}
+      ${backTo(id)}
+    </div>`+siblings(id);
+  }
   function renderPage(id){
-    const p=PAGES[id], g=GROUPS[p.g];
-    const sibs=Object.entries(PAGES).filter(([,v])=>v.g===p.g)
-      .map(([k,v])=>`<a class="chip${k===id?' on':''}" href="#${k}">${v.title}</a>`).join('');
-    sub.innerHTML=`
-      <div class="sp-head"><div class="container">
-        <div class="crumbs"><a href="#top">דף הבית</a> › <a href="${g.back}">${g.name}</a> › ${p.title}</div>
-        <h1>${p.title}</h1>${p.tag?`<span class="chip">${p.tag}</span>`:''}
-      </div></div>
+    const p=NODES[id];
+    sub.innerHTML=head(id)+`
       <div class="container sp-body">
         <div>
-          <p class="lead">${p.intro}</p>
-          <h2>מה תמצאו כאן</h2>
-          <ul>${p.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+          <p class="lead">${p.intro||T}</p>
+          ${p.items?`<h2>מה תמצאו כאן</h2><ul>${p.items.map(i=>`<li>${i}</li>`).join('')}</ul>`:''}
           ${p.todo?`<div class="todo">${p.todo}</div>`:''}
-          <a class="btn btn-ghost back" href="${g.back}">חזרה ל${g.name}</a>
+          ${backTo(id)}
         </div>
         <div class="ph">תמונה – ${p.title}<br>(תתווסף בהמשך)</div>
-      </div>
-      <div class="container siblings"><h3>עוד ב${g.name}</h3><div class="chips">${sibs}</div></div>`;
-    document.title=p.title+' | דרכא לאמנויות ולמדעים טירת כרמל';
+      </div>`+siblings(id);
   }
+  // צרו קשר: מעבירים את אזור הטופס מהעמוד הראשי לעמוד המשנה, ומחזירים כשחוזרים לבית
+  const contactSec=document.getElementById('contact-sec');
+  function renderContact(){ sub.innerHTML=head('contact')+'<div id="contactSlot"></div>'; document.getElementById('contactSlot').appendChild(contactSec); }
+  function restoreContact(){ if(!home.contains(contactSec)) home.appendChild(contactSec); }
 
   function renderStatement(){
     sub.innerHTML=`
@@ -931,7 +1048,7 @@
   function renderSpark(){
     sub.innerHTML=`
       <div class="sp-head"><div class="container">
-        <div class="crumbs"><a href="#top">דף הבית</a> › <a href="#about">אודותינו</a> › מקום לכל ניצוץ</div>
+        <div class="crumbs"><a href="#top">דף הבית</a> › <a href="#about-us">אודותינו</a> › מקום לכל ניצוץ</div>
         <h1>מקום לכל ניצוץ</h1><span class="chip">חינוך חברתי ומעורבות</span>
       </div></div>
       <div class="container" style="padding:46px 0 70px">
@@ -940,7 +1057,7 @@
         <div class="card"><div class="icon">🎵</div><h3>ערוץ יצירתי</h3><p>הקונסרבטוריון כמנוף לביטוי יצירתי משותף.</p></div>
         <div class="card"><div class="icon">🗳</div><h3>קול אזרחי</h3><p>מועצת תלמידים שמעצימה את התלמידים לעצב את סביבתם היומיומית.</p></div>
         <div class="card"><div class="icon">🧭</div><h3>מנהיגות שטח</h3><p>מש"צים (מדריכי של"ח צעירים): בניית חוסן ואחריות סביבתית.</p></div></div>
-        <a class="btn btn-ghost back" href="#about">חזרה לאודותינו</a>
+        <a class="btn btn-ghost back" href="#about-us">חזרה לאודותינו</a>
       </div>`;
     document.title='מקום לכל ניצוץ | דרכא לאמנויות ולמדעים טירת כרמל';
   }
@@ -951,7 +1068,7 @@
       return `<figure class="tk-page"><img src="p${n}.jpg" loading="${i<2?'eager':'lazy'}" width="1105" height="1430" alt="תקנון בית הספר – עמוד ${i+1} מתוך ${N}"></figure>`}).join('');
     sub.innerHTML=`
       <div class="sp-head"><div class="container">
-        <div class="crumbs"><a href="#top">דף הבית</a> › <a href="#about">אודותינו</a> › תקנון בית הספר</div>
+        <div class="crumbs"><a href="#top">דף הבית</a> › <a href="#about-us">אודותינו</a> › תקנון בית הספר</div>
         <h1>תקנון בית הספר</h1><span class="chip">חוברת תקנון, אורחות חיים ומעטפת קליטה · תשפ"ז</span>
       </div></div>
       <div class="container tk-wrap">
@@ -970,10 +1087,15 @@
     document.title='תקנון בית הספר | דרכא לאמנויות ולמדעים טירת כרמל';
   }
   function route(){
-    const id=location.hash.slice(1);
-    if(PAGES[id]||['accessibility','spark','takanon'].includes(id)){
-      id==='accessibility'?renderStatement():id==='spark'?renderSpark():id==='takanon'?renderTakanon():renderPage(id); home.hidden=true; sub.hidden=false; window.scrollTo(0,0);
+    const id=location.hash.slice(1), n=NODES[id];
+    if(n){
+      if(n.special!=='contact') restoreContact();
+      const sp=n.special;
+      sp==='statement'?renderStatement():sp==='spark'?renderSpark():sp==='takanon'?renderTakanon():sp==='contact'?renderContact():n.kind==='index'?renderIndex(id):renderPage(id);
+      if(sp!=='spark'&&sp!=='takanon'&&sp!=='statement') document.title=n.title+' | דרכא לאמנויות ולמדעים טירת כרמל';
+      home.hidden=true; sub.hidden=false; window.scrollTo(0,0);
     }else{
+      restoreContact();
       const wasSub=!sub.hidden;
       sub.hidden=true; home.hidden=false; document.title='בית ספר דרכא לאמנויות ולמדעים – טירת כרמל';
       if(wasSub){ const t=id&&document.getElementById(id); t?t.scrollIntoView():window.scrollTo(0,0); }
@@ -1041,17 +1163,25 @@
     document.querySelectorAll('.stats .stat').forEach(el=>{const b=el.querySelector('b');b.dataset.target=b.textContent;b.textContent='0';cio.observe(el)});
   })();
 
-  // טופס: פותח את תוכנת הדוא"ל עם ההודעה מוכנה לשליחה לבית הספר
-  // (כשנחבר שירות טפסים כמו Formspree – ההודעה תישלח ישירות מהאתר)
-  document.getElementById('contactForm').addEventListener('submit',e=>{
+  // טופס צרו קשר: נשלח ישירות מהאתר לתיבת הדוא"ל של בית הספר (דרך השירות החינמי FormSubmit)
+  // בפעם הראשונה FormSubmit שולח לתיבה הזו מייל אישור – צריך ללחוץ בו על Activate פעם אחת.
+  const FORM_TO='arts-sc-tc@darcaschools.co.il';
+  document.getElementById('contactForm').addEventListener('submit',async e=>{
     e.preventDefault();
-    const f=e.target, v=n=>f.elements[n].value.trim();
-    const body=`שם: ${v('name')}\nטלפון: ${v('phone')}\nדוא"ל: ${v('email')}\n\n${v('message')}`;
-    const href='mailto:arts-sc-tc@darcaschools.co.il?subject='+encodeURIComponent('פנייה מהאתר – '+v('name'))+'&body='+encodeURIComponent(body);
-    const t=document.getElementById('thanks');
-    t.innerHTML='נפתחה תוכנת הדוא"ל עם ההודעה – נשאר רק ללחוץ "שליחה". לא נפתח? כתבו לנו ל-<a href="mailto:arts-sc-tc@darcaschools.co.il">arts-sc-tc@darcaschools.co.il</a>';
-    t.style.display='block';
-    location.href=href;
+    const f=e.target, v=n=>f.elements[n].value.trim(), btn=f.querySelector('button[type=submit]'), t=document.getElementById('thanks');
+    if(v('_honey')) return;
+    btn.disabled=true; const lbl=btn.textContent; btn.textContent='שולח…'; t.style.display='none'; t.classList.remove('err');
+    try{
+      const r=await fetch('https://formsubmit.co/ajax/'+FORM_TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({'שם':v('name'),'טלפון':v('phone'),'דוא"ל':v('email'),'הודעה':v('message'),_replyto:v('email'),_subject:'פנייה מהאתר – '+v('name'),_template:'table',_captcha:'false'})});
+      const d=await r.json().catch(()=>({}));
+      if(r.ok && String(d.success)==='true'){ t.textContent='תודה! ההודעה נשלחה ונחזור אליכם בהקדם.'; f.reset(); }
+      else throw new Error(d.message||r.status);
+    }catch(err){
+      t.classList.add('err');
+      t.innerHTML='לא הצלחנו לשלוח את ההודעה כרגע. אפשר לכתוב לנו ל-<a href="mailto:'+FORM_TO+'">'+FORM_TO+'</a> או להתקשר ל-<a href="tel:+97246928060">04-6928060</a>.';
+    }
+    t.style.display='block'; btn.disabled=false; btn.textContent=lbl;
   });
 </script>
 </body>
