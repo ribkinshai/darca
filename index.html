@@ -908,9 +908,9 @@
   }
 
   function renderTakanon(){
-    const N=11, pdf='takanon/takanon-tashpaz.pdf', name='תקנון בית ספר דרכא לאמנויות ולמדעים - תשפז.pdf';
+    const N=11, pdf='takanon-tashpaz.pdf', name='תקנון בית ספר דרכא לאמנויות ולמדעים - תשפז.pdf';
     const pages=Array.from({length:N},(_,i)=>{const n=String(i+1).padStart(2,'0');
-      return `<figure class="tk-page"><img src="takanon/p${n}.jpg" loading="${i<2?'eager':'lazy'}" width="1105" height="1430" alt="תקנון בית הספר – עמוד ${i+1} מתוך ${N}"></figure>`}).join('');
+      return `<figure class="tk-page"><img src="p${n}.jpg" loading="${i<2?'eager':'lazy'}" width="1105" height="1430" alt="תקנון בית הספר – עמוד ${i+1} מתוך ${N}"></figure>`}).join('');
     sub.innerHTML=`
       <div class="sp-head"><div class="container">
         <div class="crumbs"><a href="#top">דף הבית</a> › <a href="#about">אודותינו</a> › תקנון בית הספר</div>
